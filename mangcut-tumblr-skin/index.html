@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--change title to {Title}-->
+    <title>mangcut</title>
+    <script src="script.js" defer></script>
+    <!--change url to {Favicon}-->
+    <link rel="icon" href="https://i.imgur.com/MFaEvSF.jpg">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    
+    <div class="main-visual">
+        
+        <img class="image" src="https://i.imgur.com/DwsF85l.jpg" alt="ayato"/>
+    
+    </div>
+    
+    <div class="about-me">
+
+        <img class="ab-me" src="https://i.imgur.com/MFaEvSF.jpg" alt="about-me-pfp">
+        
+        <h5 class="name">Mangcut</h5>
+        
+        <div class="nav">
+            <button class="btn-nav">art</button>
+            <button class="btn-nav">faq</button>
+            <button class="btn-nav">commissions</button>
+        </div>
+
+        <div class="social">
+            <button class="btn-social" id="insta">Insta</button>
+            <button class="btn-social" id="twitter">Twitter</button>
+            <button class="btn-social" id="pixiv">Pixiv</button>
+        </div>
+        
+        <div class="lil-link">
+            <button class="bottom-btn">archive</button>
+            <button class="bottom-btn">contact me</button>
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
+<html>
+<body style="background-color:black;">
+</body>
+</html>
+
+        {block:TagPage}
+            <h2 class="tagged">Posts tagged "{Tag}"</h2>
+        {/block:TagPage}
+
+        <!-- Post -->
+        <div class="index-post-wrapper">
+          {block:Posts}
+            <article class="post {PostType}">
+              <div class="post-inner">
+
+                <!-- post: text -->
+                {block:Text}
+                  <div class="post-content">
+                    <header class="entry-header">
+                      {block:Title}
+                        <h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>
+                      {/block:Title}
+                    </header>
+                    <div class="entry-content">
+                      {Body}
+                    </div>
+                    <div class="index-entry-footer">
+                      <img src="https://static.tumblr.com/xlsgtjb/p7Yned8qd/icon-link.svg" class="icon-link">
+                      <a href="{Permalink}">
+                        Permalink
+                      </a>
+                    </div>
+                  </div>
+                {/block:Text}
+
+                <!-- post: photo -->
+                {block:Photo}
+                  <a href="{Permalink}">
+                    <img src="{PhotoURL-400}" alt="{PhotoAlt}"/>
+                  </a>
+                {/block:Photo}
+
+                <!-- post: photoset -->
+                {block:Photoset}
+                  {block:Photos}
+                    <a href="{Permalink}">
+                      <img src="{PhotoURL-400}" alt="{PhotoAlt}"/>
+                    </a>
+                  {/block:Photos}
+                {/block:Photoset}
+
+                <!-- post: quote -->
+                {block:Quote}
+                  <div class="post-content">
+                    <div class="entry-content {Length}">
+                      <a href="{Permalink}">“{Quote}”</a>
+                    </div>
+                    <div class="index-entry-footer">
+                      <img src="https://static.tumblr.com/xlsgtjb/p7Yned8qd/icon-link.svg" class="icon-link">
+                      <a href="{Permalink}">
+                        Permalink
+                      </a>
+                    </div>
+                  </div>
+                {/block:Quote}
+
+                <!-- post: link -->
+                {block:Link}
+                  <div class="post-content">
+                    <header class="entry-header">
+                      <h1 class="entry-title">
+                        <a href="{Permalink}" class="link-url" {Target}>{Name}</a>
+                      </h1>
+                    </header>
+                    <div class="entry-content">
+                      {block:Description}
+                        <div class="link-description">{Description}</div>
+                      {/block:Description}
+                    </div>
+                    <div class="index-entry-footer">
+                      <img src="https://static.tumblr.com/xlsgtjb/p7Yned8qd/icon-link.svg" class="icon-link">
+                      <a href="{Permalink}">
+                        Permalink
+                      </a>
+                    </div>
+                  </div>
+                {/block:Link}
+
+                <!-- post: chat -->
+                {block:Chat}
+                  <div class="post-content">
+                    {block:Title}
+                      <h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>
+                    {/block:Title}
+                    <div class="entry-content">
+                      <ul class="ul-chat">
+                        {block:Lines}
+                        <li class="{Alt} user_{UserNumber}">
+                        {block:Label}
+                        <span class="label">{Label}</span>
+                        {/block:Label}
+                        {Line}
+                        </li>
+                        {/block:Lines}
+                      </ul>
+                    </div>
+                    <div class="index-entry-footer">
+                      <img src="https://static.tumblr.com/xlsgtjb/p7Yned8qd/icon-link.svg" class="icon-link">
+                      <a href="{Permalink}">
+                        Permalink
+                      </a>
+                    </div>
+                  </div>
+                {/block:Chat}
+
+                <!-- post: video -->
+                {block:Video}
+                  <div class="post-content">
+                    <div class="entry-content video-iframe">
+                      {Video-700}
+                      {block:Caption}
+                        <div class="caption">
+                          {Caption}
+                        </div>
+                      {/block:Caption}
+                    </div>
+                    <div class="index-entry-footer">
+                      <img src="https://static.tumblr.com/xlsgtjb/p7Yned8qd/icon-link.svg" class="icon-link">
+                      <a href="{Permalink}">
+                        Permalink
+                      </a>
+                    </div>
+                  </div>
+                {/block:Video}
+
+                <!-- post: audio -->
+                {block:Audio}
+                  <div class="post-content">
+                    <div class="entry-content">
+                      {AudioPlayerBlack}
+                      {block:Caption}
+                        <div class="caption">
+                          {Caption}
+                        </div>
+                      {/block:Caption}
+                    </div>
+                    <div class="index-entry-footer">
+                      <img src="https://static.tumblr.com/xlsgtjb/p7Yned8qd/icon-link.svg" class="icon-link">
+                      <a href="{Permalink}">
+                        Permalink
+                      </a>
+                    </div>
+                  </div>
+                {/block:Audio}
+
+                <!-- post: answer -->
+                {block:Answer}
+                  <div class="post-content">
+                    <div class="asker-group">
+                      <img src="{AskerPortraitURL-24}" width="24" height="24" {Asker}
+                    </div>
+                    <h1 class="entry-title">
+                      <a href="{Permalink}">
+                        {Question}
+                      </a>
+                    </h1>
+                    <div class="entry-content">
+                      <div class="answer cont">{Answer}</div>
+                    </div>
+                    <div class="index-entry-footer">
+                      <img src="https://static.tumblr.com/xlsgtjb/p7Yned8qd/icon-link.svg" class="icon-link">
+                      <a href="{Permalink}">
+                        Permalink
+                      </a>
+                    </div>
+                  </div>
+                {/block:Answer}
+
+              </div>
+            </article>
+          {/block:Posts}
+        </div>
+
+      </div>
+    </div>
