@@ -1,2 +1,4 @@
 # mangcut-tumblr-skin
-tumblr skin for mangcut with norman
+Custom tumblr skin for mangcut
+
+By My and Caleb and Normani
