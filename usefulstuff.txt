@@ -1,0 +1,444 @@
+            <section class="post">
+                {block:Text}
+                <div class="post-content">
+                    {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                    {block:NotReblog}
+                        <div class="body-text">{Body}</div>
+                    {/block:NotReblog}
+                    {block:RebloggedFrom}
+                        <div class="reblog-list">
+                            {block:Reblogs}
+                                <div class="post-reblog-trail-item{block:isOriginalEntry} original-reblog-content{/block:isOriginalEntry}">
+                                    <div class="post-reblog-header">
+                                                                                                                {block:HasAvatar}
+                                <div class="post-avatar">
+                                    <div class="post-avatar-wrapper">
+                                        {block:HasPermalink}
+                                        <a class="post-avatar-link{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}" href="{Permalink}" target="_blank">
+                                            <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                        </a>
+                                        {/block:HasPermalink}
+                                        {block:HasNoPermalink}
+                                        <span class="reblog-avatar{block:IsDeactivated} inactive{/block:IsDeactivated}{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}">
+                                            <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                        </span>
+                                        {/block:HasNoPermalink}
+                                    </div>
+                                </div>
+                            {/block:HasAvatar}
+
+                            {block:HasPermalink}
+                                <a target="_blank" class="post-tumblelog-name" href="{Permalink}">{Username}</a>
+                            {/block:HasPermalink}
+                            {block:HasNoPermalink}
+                                <span class="post-tumblelog-name {block:IsDeactivated} inactive{/block:IsDeactivated}">{Username}</span>
+                            {/block:HasNoPermalink}
+
+                                        {block:HasNoPermalink}
+                                            <span class="post-tumblelog-name {block:IsDeactivated} inactive{/block:IsDeactivated}">{Username}</span>
+                                        {/block:HasNoPermalink}
+                                    </div>
+                                    <div class="post-reblog-content">
+                                        <div class="post-body">
+                                            {Body}
+                                        </div>
+                                    </div>
+                                </div>
+                            {/block:Reblogs}
+                        </div>
+                    {/block:RebloggedFrom}
+                </div>
+                {/block:Text}
+
+                {block:Photo}
+                <figure class="post-content {block:HighRes}high-res{/block:HighRes}{block:Caption} with-caption{/block:Caption}" data-photo-width="{PhotoWidth-HighRes}">
+                    <div class="photo-wrapper">
+                        <div class="photo-wrapper-inner">
+                            {LinkOpenTag}<img src="{PhotoURL-HighRes}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading} alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}"{block:LivePhoto}data-live-photo="{LivePhotoURL}" data-live-photo-still-image-time="{LivePhotoStillImageTime}"{/block:LivePhoto}>{LinkCloseTag}
+                        </div>
+                    </div>
+                    {block:NotReblog}
+                        <figcaption class="caption">
+                            {Caption}
+                        </figcaption>
+                    {/block:NotReblog}
+                    {block:RebloggedFrom}
+                    <div class="reblog-list">
+                        {block:Reblogs}
+                            <div class="post-reblog-trail-item{block:isOriginalEntry} original-reblog-content{/block:isOriginalEntry}">
+                                <div class="post-reblog-header">
+                                                                                                            {block:HasAvatar}
+                                <div class="post-avatar">
+                                    <div class="post-avatar-wrapper">
+                                        {block:HasPermalink}
+                                        <a class="post-avatar-link{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}" href="{Permalink}" target="_blank">
+                                            <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                        </a>
+                                        {/block:HasPermalink}
+                                        {block:HasNoPermalink}
+                                        <span class="reblog-avatar{block:IsDeactivated} inactive{/block:IsDeactivated}{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}">
+                                            <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                        </span>
+                                        {/block:HasNoPermalink}
+                                    </div>
+                                </div>
+                            {/block:HasAvatar}
+
+                            {block:HasPermalink}
+                                <a target="_blank" class="post-tumblelog-name" href="{Permalink}">{Username}</a>
+                            {/block:HasPermalink}
+                            {block:HasNoPermalink}
+                                <span class="post-tumblelog-name {block:IsDeactivated} inactive{/block:IsDeactivated}">{Username}</span>
+                            {/block:HasNoPermalink}
+
+                                </div>
+                                <div class="post-reblog-content">
+                                    <div class="post-body">
+                                        {Body}
+                                    </div>
+                                </div>
+                            </div>
+                        {/block:Reblogs}
+                    </div>
+                    {/block:RebloggedFrom}
+                </figure>
+                {/block:Photo}
+
+                {block:Photoset}
+                <figure class="post-content photoset {block:Caption}with-caption{/block:Caption}">
+                    {Photoset}
+                    {block:NotReblog}
+                        <figcaption class="caption">
+                            {Caption}
+                        </figcaption>
+                    {/block:NotReblog}
+                    {block:RebloggedFrom}
+                    <div class="reblog-list">
+                        {block:Reblogs}
+                            <div class="post-reblog-trail-item{block:isOriginalEntry} original-reblog-content{/block:isOriginalEntry}">
+                                <div class="post-reblog-header">
+                                    {block:HasAvatar}
+                                        <div class="post-avatar">
+                                            <div class="post-avatar-wrapper">
+                                                {block:HasPermalink}
+                                                <a class="post-avatar-link{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}" href="{Permalink}" target="_blank">
+                                                    <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                </a>
+                                                {/block:HasPermalink}
+                                                {block:HasNoPermalink}
+                                                <span class="reblog-avatar{block:IsDeactivated} inactive{/block:IsDeactivated}{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}">
+                                                    <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                </span>
+                                                {/block:HasNoPermalink}
+                                            </div>
+                                        </div>
+                                    {/block:HasAvatar}
+
+                                    {block:HasPermalink}
+                                        <a target="_blank" class="post-tumblelog-name" href="{Permalink}">{Username}</a>
+                                    {/block:HasPermalink}
+                                    {block:HasNoPermalink}
+                                        <span class="post-tumblelog-name {block:IsDeactivated} inactive{/block:IsDeactivated}">{Username}</span>
+                                    {/block:HasNoPermalink}
+                                </div>
+                                <div class="post-reblog-content">
+                                    <div class="post-body">
+                                        {Body}
+                                    </div>
+                                </div>
+                            </div>
+                        {/block:Reblogs}
+                    </div>
+                    {/block:RebloggedFrom}
+                </figure>
+                {/block:Photoset}
+
+                {block:Quote}
+                <div class="post-content">
+                    <blockquote class="{Length}">
+                        {Quote}
+                    </blockquote>
+                    {block:Source}
+                    <div class="source">{Source}</div>
+                    {/block:Source}
+                </div>
+                {/block:Quote}
+
+
+                {block:Link}
+                <div class="post-content{block:Description} with-caption{/block:Description}{block:Thumbnail} with-thumbnail{/block:Thumbnail}">
+                    <div class="link-wrapper">
+                        <a {Target} href="{URL}" class="link">
+                            {block:Thumbnail}
+                            <div class="link-thumbnail"><img src="{Thumbnail-HighRes}" alt="" /></div>
+                            {/block:Thumbnail}
+                            <div class="link-text-wrapper clearfix">
+                                <div class="link-text">
+                                    {block:Host}
+                                    <div class="link-host">{Host}</div>
+                                    {/block:Host}
+                                    <h2 class="link-title">{Name}</h2>
+                                    {block:Excerpt}
+                                    <div class="link-excerpt">{Excerpt}</div>
+                                    {/block:Excerpt}
+                                    {block:Author}
+                                    <div class="link-author">{Author}</div>
+                                    {/block:Author}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {block:NotReblog}
+                        <div class="caption">
+                            {Description}
+                        </div>
+                    {/block:NotReblog}
+                    {block:RebloggedFrom}
+                        <div class="reblog-list">
+                            {block:Reblogs}
+                                <div class="post-reblog-trail-item{block:isOriginalEntry} original-reblog-content{/block:isOriginalEntry}">
+                                    <div class="post-reblog-header">
+                                        {block:HasAvatar}
+                                            <div class="post-avatar">
+                                                <div class="post-avatar-wrapper">
+                                                    {block:HasPermalink}
+                                                    <a class="post-avatar-link{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}" href="{Permalink}" target="_blank">
+                                                        <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                    </a>
+                                                    {/block:HasPermalink}
+                                                    {block:HasNoPermalink}
+                                                    <span class="reblog-avatar{block:IsDeactivated} inactive{/block:IsDeactivated}{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}">
+                                                        <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                    </span>
+                                                    {/block:HasNoPermalink}
+                                                </div>
+                                            </div>
+                                        {/block:HasAvatar}
+
+                                        {block:HasPermalink}
+                                            <a target="_blank" class="post-tumblelog-name" href="{Permalink}">{Username}</a>
+                                        {/block:HasPermalink}
+                                        {block:HasNoPermalink}
+                                            <span class="post-tumblelog-name {block:IsDeactivated} inactive{/block:IsDeactivated}">{Username}</span>
+                                        {/block:HasNoPermalink}
+                                    </div>
+                                    <div class="post-reblog-content">
+                                        <div class="post-body">
+                                            {Body}
+                                        </div>
+                                    </div>
+                                </div>
+                            {/block:Reblogs}
+                        </div>
+                    {/block:RebloggedFrom}
+                </div>
+                {/block:Link}
+
+
+                {block:Chat}
+                <div class="post-content">
+                    {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                    <ul class="conversation">
+                    {block:Lines}
+                        <li class="chat-{Alt}">{block:Label}<span class="label">{Label}</span>{/block:Label} {Line}</li>
+                    {/block:Lines}
+                    </ul>
+                </div>
+                {/block:Chat}
+
+
+                {block:Audio}
+                <div class="post-content {block:Caption}with-caption{/block:Caption}">
+                    <div class="audio_container">
+                        {block:AudioEmbed}
+                            {AudioEmbed color="white"}
+                        {/block:AudioEmbed}
+                    </div>
+                    {block:NotReblog}
+                        <div class="caption">
+                            {Caption}
+                        </div>
+                    {/block:NotReblog}
+                    {block:RebloggedFrom}
+                        <div class="reblog-list">
+                            {block:Reblogs}
+                                <div class="post-reblog-trail-item{block:isOriginalEntry} original-reblog-content{/block:isOriginalEntry}">
+                                    <div class="post-reblog-header">
+                                        {block:HasAvatar}
+                                            <div class="post-avatar">
+                                                <div class="post-avatar-wrapper">
+                                                    {block:HasPermalink}
+                                                    <a class="post-avatar-link{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}" href="{Permalink}" target="_blank">
+                                                        <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                    </a>
+                                                    {/block:HasPermalink}
+                                                    {block:HasNoPermalink}
+                                                    <span class="reblog-avatar{block:IsDeactivated} inactive{/block:IsDeactivated}{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}">
+                                                        <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                    </span>
+                                                    {/block:HasNoPermalink}
+                                                </div>
+                                            </div>
+                                        {/block:HasAvatar}
+
+                                        {block:HasPermalink}
+                                            <a target="_blank" class="post-tumblelog-name" href="{Permalink}">{Username}</a>
+                                        {/block:HasPermalink}
+                                        {block:HasNoPermalink}
+                                            <span class="post-tumblelog-name {block:IsDeactivated} inactive{/block:IsDeactivated}">{Username}</span>
+                                        {/block:HasNoPermalink}
+                                    </div>
+                                    <div class="post-reblog-content">
+                                        <div class="post-body">
+                                            {Body}
+                                        </div>
+                                    </div>
+                                </div>
+                            {/block:Reblogs}
+                        </div>
+                    {/block:RebloggedFrom}
+                </div>
+                {/block:Audio}
+
+
+                {block:Video}
+                <figure class="post-content {block:Caption}with-caption{/block:Caption}">
+                    <div class="video-wrapper">
+                        {Video-700}
+                    </div>
+
+                    {block:NotReblog}
+                        <figcaption class="caption">
+                            {Caption}
+                        </figcaption>
+                    {/block:NotReblog}
+                    {block:RebloggedFrom}
+                        <div class="reblog-list">
+                            {block:Reblogs}
+                                <div class="post-reblog-trail-item{block:isOriginalEntry} original-reblog-content{/block:isOriginalEntry}">
+                                    <div class="post-reblog-header">
+                                        {block:HasAvatar}
+                                            <div class="post-avatar">
+                                                <div class="post-avatar-wrapper">
+                                                    {block:HasPermalink}
+                                                    <a class="post-avatar-link{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}" href="{Permalink}" target="_blank">
+                                                        <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                    </a>
+                                                    {/block:HasPermalink}
+                                                    {block:HasNoPermalink}
+                                                    <span class="reblog-avatar{block:IsDeactivated} inactive{/block:IsDeactivated}{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}">
+                                                        <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                    </span>
+                                                    {/block:HasNoPermalink}
+                                                </div>
+                                            </div>
+                                        {/block:HasAvatar}
+
+                                        {block:HasPermalink}
+                                            <a target="_blank" class="post-tumblelog-name" href="{Permalink}">{Username}</a>
+                                        {/block:HasPermalink}
+                                        {block:HasNoPermalink}
+                                            <span class="post-tumblelog-name {block:IsDeactivated} inactive{/block:IsDeactivated}">{Username}</span>
+                                        {/block:HasNoPermalink}
+                                    </div>
+                                    <div class="post-reblog-content">
+                                        <div class="post-body">
+                                            {Body}
+                                        </div>
+                                    </div>
+                                </div>
+                            {/block:Reblogs}
+                        </div>
+                    {/block:RebloggedFrom}
+                </figure>
+                {/block:Video}
+
+                {block:Answer}
+                <div class="post-content">
+                    <div class="note-item note-item-asker">
+                        <div class="text">
+                            <p class="asker"><strong>{Asker}</strong> asked:</p>
+                            <div class="asker-question">
+                                {Question}
+                            </div>
+                        </div>
+                        <div class="avatar">
+                            <img class="asker-avatar" src="{AskerPortraitURL-96}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading} alt="">
+                        </div>
+                    </div>
+
+                    {block:Answerer}
+                    <div class="note-item note-item-answerer">
+                        <div class="text">
+                            <p class="answerer"><strong>{Answerer}</strong> answered:</p>
+                            <div class="answerer-answer">
+                                {Answer}
+                            </div>
+                        </div>
+                        <div class="avatar">
+                            <img class="answerer-avatar" src="{AnswererPortraitURL-96}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading} alt="">
+                        </div>
+                    </div>
+                    {/block:Answerer}
+
+                    {block:NotReblog}
+                        <div class="replies">
+                            {Replies}
+                        </div>
+                    {/block:NotReblog}
+                    {block:RebloggedFrom}
+                        <div class="reblog-list">
+                            {block:Reblogs}
+                                <div class="post-reblog-trail-item{block:isOriginalEntry} original-reblog-content{/block:isOriginalEntry}">
+                                    <div class="post-reblog-header">
+                                        {block:HasAvatar}
+                                            <div class="post-avatar">
+                                                <div class="post-avatar-wrapper">
+                                                    {block:HasPermalink}
+                                                    <a class="post-avatar-link{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}" href="{Permalink}" target="_blank">
+                                                        <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                    </a>
+                                                    {/block:HasPermalink}
+                                                    {block:HasNoPermalink}
+                                                    <span class="reblog-avatar{block:IsDeactivated} inactive{/block:IsDeactivated}{block:isNotOriginalEntry} sub-icon-reblog{/block:isNotOriginalEntry}">
+                                                        <img class="post-avatar-image" src="{PortraitURL-64}"{block:IfLazyImageLoading} loading="lazy"{/block:IfLazyImageLoading}>
+                                                    </span>
+                                                    {/block:HasNoPermalink}
+                                                </div>
+                                            </div>
+                                        {/block:HasAvatar}
+
+                                        {block:HasPermalink}
+                                            <a target="_blank" class="post-tumblelog-name" href="{Permalink}">{Username}</a>
+                                        {/block:HasPermalink}
+                                        {block:HasNoPermalink}
+                                            <span class="post-tumblelog-name {block:IsDeactivated} inactive{/block:IsDeactivated}">{Username}</span>
+                                        {/block:HasNoPermalink}
+                                    </div>
+                                    <div class="post-reblog-content">
+                                        <div class="post-body">
+                                            {Body}
+                                        </div>
+                                    </div>
+                                </div>
+                            {/block:Reblogs}
+                        </div>
+                    {/block:RebloggedFrom}
+                </div>
+                {/block:Answer}
+
+                <section class="inline-meta post-extra{block:RebloggedFrom} has-reblog{/block:RebloggedFrom}{block:ContentSource} has-source{/block:ContentSource}{block:HasTags} has-tags{/block:HasTags}">
+                    {block:ContentSource}
+                        <a class="meta-item source-link" href="{SourceURL}">{lang:Source}: {SourceTitle}</a>
+                    {/block:ContentSource}
+                    {block:HasTags}
+                        {block:Tags}
+                             <a class="meta-item tag-link" href="{TagURL}">{Tag}</a>
+                        {/block:Tags}
+                    {/block:HasTags}
+                </section>
+
+            </section>
+
+            {block:Date}
+            

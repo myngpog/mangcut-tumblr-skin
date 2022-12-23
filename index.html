@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{Title}</title>
+    <script src="script.js" defer></script>
+    <link rel="icon" href="{Favicon}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    
+    <!-- Variables -->
+    <meta name="text:Your Name" content="" />
+    <meta name="text:More Information" content="" />
+    <meta name="text:Commissions" content=""/>
+    <meta name="text:Illustrations" content=""/>
+
+    <!--Social Variables-->
+    <meta name="text: Artstation URL" content=""/>
+    <meta name="text: Twitter URL" content=""/>
+    <meta name="text: Facebook URL" content=""/>
+    <meta name="text: Pixiv URL" content=""/>
+    <meta name="text: Instagram URL" content=""/>
+
+    <!-- Javascript Script -->
+    <script>
+        console.log("Pog")
+        var url = "api.tumblr.com/v2/blog/{blog-identifier}/notifications"
+    </script>
+
+</head>
+<header>
+    
+    <div class="main-visual"></div>
+    
+    <div class="about-me">
+
+        <img class="ab-me" src="{Favicon}" alt="about-me-pfp">
+        
+        <div class="description">
+            <div class ="name">
+                <a href="/">{text:Your Name}</a>
+            </div>
+            <h6 class="info">{text:More Information}</h6>
+        </div>
+        
+        <hr>
+
+        <div class="main-nav">          
+            <span><a href={text: Illustrations}>Illustrations</a></span>
+            <span><a href={text: Commissions}>Commissions</a></span>
+        </div>
+
+        <div class="social">
+          <span class="twitter">
+            <a href="{text: Twitter URL}" target="_blank">
+            <img src="https://static.tumblr.com/xlsgtjb/BBuned82o/icon-twitter.svg" width="13px">
+            </a>
+          </span>
+          <span class="instagram">
+            <a href="{text: Instagram URL}" target="_blank">
+            <img src="https://static.tumblr.com/yn9pnsq/e1krna050/87390.png" width="13px">
+            </a>
+          </span>
+          <span class="pixiv">
+            <a href="{text: Pixiv URL}" target="_blank">
+              <img src="https://static.tumblr.com/xlsgtjb/gAened81u/icon-pixiv.svg" width="13px">
+            </a>
+          </span>
+          <span>
+            <a href="{text: Artstation URL}" target="_blank">
+              <img src="https://static.tumblr.com/yn9pnsq/e6Irna09z/artstation-1888117-1613768.png" width="15px">
+            </a>
+          </span>
+        </div>
+        
+        <div class="section-bottom">
+          <span><a href="/archive">Archive</a></span>
+          <span><a href="/faqs">FAQs</a></span>
+        </div>
+
+    </div>
+</header>
+
+<body>
+    <!-- This section has all of the artwork and etc -->
+    <!-- <section class = 'artworkSection'>
+
+
+        <h1 class = "artworkText">Archive</h1>
+        <hr width = "77%;">
+
+        <div class = "artworkSection">
+            {block:Photo}
+                {LinkOpenTag}<img src="{PhotoURL-500}" />{LinkCloseTag}
+                {block:Caption}{Caption}{/block:Caption}
+            {/block:Photo}
+            
+            {/block:Posts}
+   
+        </div>
+    </section>
+    {block:Photo} -->
+
+<!--
+<section>
+    {block:Photoset}
+    {Photoset-500}
+    <img src = "{PhotoURL}">
+    <h1>{Photocount}</h1>
+    {/block:Photoset}
+</section>
+    {/block:Photo}
+
+-->
+    
+</body>
+
+    <!--Embedded CSS Stuff-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', sans-serif;
+            font-weight:400;
+        }
+        .main-visual{
+            background-image: url("{HeaderImage}");
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-size: cover;
+            position: absolute;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        .description{
+            padding:1%;
+            color:white;
+            opacity: 90%;
+            text-align:center;
+            width: 50%;
+            padding-bottom:15px;
+        }
+        .name{
+            text-align: center;
+            font-size:27px;
+            padding-bottom:3%;
+        }
+        .name a{
+            text-decoration: none;
+            color: white;
+            font-family: inherit;
+        }
+        .info{
+            font-size:13px;
+            line-height:100%;
+            font-weight:300;
+            opacity: 90%;
+        }
+        /*Fix line-spacing when scaling*/
+        .ab-me {
+            max-width: 30%;
+            border-radius:50%;
+        }
+        .about-me {
+            background-color: hsla(0, 0%, 0%, .65);
+            width: 30%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .social{
+            position: relative;
+            vertical-align: middle;
+            top: 1%;
+            padding-bottom: 20px;
+        }
+        .social a{
+            text-align: center;
+            line-height: 32px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 0.5vh 0.5vh 0.5vh;
+            text-decoration: none;
+            color: white;
+            border: 1px solid;
+            border-radius: 50%;
+            background: transparent;
+        }
+        .twitter:hover{
+            background-color: cadetblue;
+        }
+        .main-nav{
+            padding-bottom: 5px;
+            border-radius: 50%;
+        }
+        .main-nav a{
+            font-family: 'Quicksand', sans-serif;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding-left: 12px;
+        }
+        .main-nav a:hover{
+            color:rgb(204, 204, 204)
+        }
+        .section-bottom a{
+            color: white;
+            text-decoration: none;
+            padding-left: 1vh;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 15px;
+        }
+        .section-bottom{
+            align-items: center;
+            position: relative;
+            text-align: center;
+        }
+        .section-bottom a:hover{
+            color:rgb(204, 204, 204)
+        }
+
+        /*Line Animation*/
+        hr {
+            margin-top: 0px;
+            margin-bottom: 3%;
+            border: none;
+            background: white;
+            height: 1px;
+            width: 0;
+            animation: separator-width 1s ease-out forwards;
+        }
+        @keyframes separator-width {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 180px;
+            }
+        }
+        
+        /* Artwork CSS */
+        .artworkSection{
+            background-color: black;
+        }
+        .artworkText{
+            color: white;
+            font-size: 50px;
+        }
+        
+    </style>
+
+</html>
