@@ -49,7 +49,7 @@
             <h6 class="info">{text:More Information}</h6>
         </div>
         
-        <hr>
+        <hr class="header-seperator">
 
         <div class="main-nav">          
             <span><a href={text: Illustrations}>Illustrations</a></span>
@@ -57,22 +57,22 @@
         </div>
 
         <div class="social">
-          <span class="twitter">
+          <span id="twitter">
             <a href="{text: Twitter URL}" target="_blank">
             <img src="https://static.tumblr.com/xlsgtjb/BBuned82o/icon-twitter.svg" width="13px">
             </a>
           </span>
-          <span class="instagram">
+          <span id="instagram">
             <a href="{text: Instagram URL}" target="_blank">
             <img src="https://static.tumblr.com/yn9pnsq/e1krna050/87390.png" width="13px">
             </a>
           </span>
-          <span class="pixiv">
+          <span id="pixiv">
             <a href="{text: Pixiv URL}" target="_blank">
               <img src="https://static.tumblr.com/xlsgtjb/gAened81u/icon-pixiv.svg" width="13px">
             </a>
           </span>
-          <span>
+          <span id="artstation">
             <a href="{text: Artstation URL}" target="_blank">
               <img src="https://static.tumblr.com/yn9pnsq/e6Irna09z/artstation-1888117-1613768.png" width="15px">
             </a>
@@ -88,6 +88,19 @@
 </header>
 
 <body>
+    <h1 class = 'artworkText'>Illustrations</h1>
+    <hr class = "underline">
+    {block:Posts}
+    
+    <section class = 'artworkSection'>
+        {block:Photo}
+        <a href="{Permalink}">
+          <img src="{PhotoURL-400}" alt="{PhotoAlt}"/>
+        </a>
+      {/block:Photo}
+
+    </section>
+    {/block:Posts}
     <!-- This section has all of the artwork and etc -->
     <!-- <section class = 'artworkSection'>
 
@@ -197,8 +210,8 @@
             border-radius: 50%;
             background: transparent;
         }
-        .twitter:hover{
-            background-color: cadetblue;
+        .social a:hover{
+            background: rgb(152, 160, 160)
         }
         .main-nav{
             padding-bottom: 5px;
@@ -231,7 +244,7 @@
         }
 
         /*Line Animation*/
-        hr {
+        .header-seperator {
             margin-top: 0px;
             margin-bottom: 3%;
             border: none;
@@ -254,9 +267,15 @@
             background-color: black;
         }
         .artworkText{
+            background-color: black;
             color: white;
             font-size: 50px;
         }
+        .underline{
+            width: 10%;
+            background-color: black;
+        }
+
         
     </style>
 
