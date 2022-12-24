@@ -88,49 +88,25 @@
 </header>
 
 <body>
-    <h1 class = 'artworkText'>Illustrations</h1>
-    <hr class = "underline">
+    <div>
+        <h1 class = 'artworkText'>Illustrations</h1>
+        <hr class = "underline">
+    </div>
+
+    <div class = "allArtwork">
     {block:Posts}
-    
-    <section class = 'artworkSection'>
-        {block:Photo}
+    <!-- This makes this block of code render for each post the user has -->
+    <section class = 'individualPiece'>
+        {block:Photo} 
+        <!-- This is rendered for each photo inside the posts block -->
         <a href="{Permalink}">
-          <img src="{PhotoURL-400}" alt="{PhotoAlt}"/>
+          <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
         </a>
       {/block:Photo}
 
     </section>
     {/block:Posts}
-    <!-- This section has all of the artwork and etc -->
-    <!-- <section class = 'artworkSection'>
-
-
-        <h1 class = "artworkText">Archive</h1>
-        <hr width = "77%;">
-
-        <div class = "artworkSection">
-            {block:Photo}
-                {LinkOpenTag}<img src="{PhotoURL-500}" />{LinkCloseTag}
-                {block:Caption}{Caption}{/block:Caption}
-            {/block:Photo}
-            
-            {/block:Posts}
-   
-        </div>
-    </section>
-    {block:Photo} -->
-
-<!--
-<section>
-    {block:Photoset}
-    {Photoset-500}
-    <img src = "{PhotoURL}">
-    <h1>{Photocount}</h1>
-    {/block:Photoset}
-</section>
-    {/block:Photo}
-
--->
+    </div>
     
 </body>
 
@@ -271,14 +247,26 @@
             color: white;
             font-size: 50px;
         }
-        .underline{
-            width: 10%;
-            padding-bottom: 10%;
-            height: 0px;
-            background-color: black;
+        hr.underline{
+            align: "left";
+            border: none;
+            height: 1px;
+            background: red;
+            width: 20%;
+            margin-bottom: 0;
         }
 
-        
+        .allArtwork{
+            display: flex;
+            background-color: black;
+            padding-top: 2%;
+
+        }
+
+        .individualPiece{
+            background-color: black;
+            padding: 5%;
+        }
     </style>
 
 </html>
