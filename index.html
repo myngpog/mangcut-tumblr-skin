@@ -91,14 +91,32 @@
         <hr class = "underline">
     </div>
 
+    <div class = 'theGallery'>
+    {block:Posts}
+
     <!-- Hopefully rows of artwork -->
     <div class = 'allArtwork'>
-        {block:Posts}
         {block:Photo}
         <img class = 'artworkPieces' src = '{PhotoURL-500}' alt = '{PhotoAlt}' onclick='displaySlides(this)'>
-        {/block:Posts}
         {/block:Photo}
     </div>
+    {/block:Posts}
+
+    </div>
+
+
+    <!-- This will render if there are previos pages -->
+    <!-- So for each previous page -->
+    <!-- {block:NextPage}
+        <div class = 'allArtwork'>
+            {block:Posts}
+            {block:Photo}
+            <img class = 'artworkPieces' src = '{PhotoURL-500}' alt = '{PhotoAlt}' onclick='displaySlides(this)'>
+            {/block:Photo}
+            {/block:Posts}
+            
+        </div>
+    {/block:NextPage} -->
 
 
 
@@ -144,6 +162,49 @@
               modal.style.display = 'block';
               modalImg.src = element.src;
           }
+
+
+        var slideIndex = 0;
+        // showSlides(slideIndex, false);
+
+        document.plusSlides = function(n) {
+            showSlides(slideIndex += n, true);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n, true);
+        }
+
+        function showSlides(n, plus) {
+        
+            var bool = plus;
+            var i;
+            var slides =  $(".artworkPieces");
+            var dots = $(".artworkPieces");
+            if (n > (slides.length- 1)) {slideIndex = 0;n=0}
+            if (n < 0) {slideIndex = slides.length-1; n = slides.length-1}
+            if (bool){
+                console.log("---")
+                console.log(n)
+                console.log(slideIndex)
+                console.log(slides.length-1)
+                modalImg.src = $(".artworkPieces")[slideIndex].src;
+                return
+            }
+        }
+        //     for (i = 0; i < slides.length; i++) {
+        //         if (bool)
+        // {
+            
+        //     slides[i].style.display = 'none';
+        // }    else {$(slides[i]).fadeOut(200)};
+        //     }
+        //     for (i = 0; i < dots.length; i++) {
+        //     dots[i].className = dots[i].className.replace(" active", "");
+        //     }
+        //     $(slides[slideIndex-1]).fadeIn(200);
+        //     dots[slideIndex-1].className += " active";
+        // }
 
           function closeModal(){
               $("myModal").fadeOut(500);
@@ -305,26 +366,30 @@
         .allArtwork{
             display: inline-block;
             background-color: black;
-            padding-top: 2%;
+            margin-top: 2%;
+            margin-left: 2%;
         }
 
         .artworkPieces{
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding-left: 3%;
+            /* padding-right: 40px; */
             height:500px;
-            width:600px;
+            width:500px;
             object-fit: cover;
             object-position:50% 50%;
         }
         .mainArtPortion{
             background-color: black;
+            align-items: center;
+            justify-content: center;
         }
 
         .allArtwork{
             display: inline-block
         }
+
 
         /* Style the Image Used to Trigger the Modal */
     #myImg {
@@ -352,10 +417,18 @@
 
     /* Modal Content (Image) */
     .modal-content {
-    margin: auto;
+    /* margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+    max-width: 700px; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: auto;
+    object-fit: cover;
     }
 
     /* Caption of Modal Image (Image Text) - Same Width as the Image */
