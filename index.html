@@ -87,28 +87,15 @@
 </header>
 
 
-<!--
-<body>
-
 <body class = 'mainArtPortion'>
     <div>
         <h1 class = 'artworkText'>Illustrations</h1>
         <hr class = "underline">
-    </div>
+    </div> -->
 
     <div class = 'theGallery'>
     {block:Posts}
-    This makes this block of code render for each post the user has
-    <section class = 'individualPiece'>
-        {block:Photo} 
-        This is rendered for each photo inside the posts block
-        <a href="{Permalink}">
-          <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-        </a>
-      {/block:Photo}
-
-    </section>
-
+    <!-- This makes this block of code render for each post the user has -->
 
     <!-- Hopefully rows of artwork -->
     <div class = 'allArtwork'>
@@ -124,7 +111,7 @@
 
     <!-- This will render if there are previos pages -->
     <!-- So for each previous page -->
-    <!-- {block:NextPage}
+    {block:NextPage}
         <div class = 'allArtwork'>
             {block:Posts}
             {block:Photo}
@@ -133,7 +120,7 @@
             {/block:Posts}
             
         </div>
-    {/block:NextPage} -->
+    {/block:NextPage}
 
 
 
@@ -148,9 +135,6 @@
     
     </div>
 
-
-
-    
 
 </body>                 
 
@@ -210,20 +194,6 @@
                 return
             }
         }
-        //     for (i = 0; i < slides.length; i++) {
-        //         if (bool)
-        // {
-            
-        //     slides[i].style.display = 'none';
-        // }    else {$(slides[i]).fadeOut(200)};
-        //     }
-        //     for (i = 0; i < dots.length; i++) {
-        //     dots[i].className = dots[i].className.replace(" active", "");
-        //     }
-        //     $(slides[slideIndex-1]).fadeIn(200);
-        //     dots[slideIndex-1].className += " active";
-        // }
-
           function closeModal(){
               $("myModal").fadeOut(500);
           }
@@ -372,7 +342,6 @@
         }
 
         /* Artwork CSS */
-        /*
         .artworkSection{
             background-color: black;
         }
@@ -420,10 +389,6 @@
         .allArtwork{
             display: inline-block
         }
-
-        */
-
-
 
         /* Style the Image Used to Trigger the Modal */
     #myImg {
