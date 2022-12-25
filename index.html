@@ -1,18 +1,20 @@
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{Title}</title>
-    <script src="script.js" defer></script>
     <link rel="icon" href="{Favicon}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+
+
     
     <!-- Variables -->
     <meta name="text:Your Name" content="" />
@@ -28,11 +30,6 @@
     <meta name="text: Pixiv URL" content=""/>
     <meta name="text: Instagram URL" content=""/>
 
-    <!-- Javascript Script -->
-    <script>
-        console.log("Pog")
-        var url = "api.tumblr.com/v2/blog/{blog-identifier}/notifications"
-    </script>
 
 </head>
 <header>
@@ -77,7 +74,7 @@
             <a href="{text: Artstation URL}" target="_blank">
               <img src="https://static.tumblr.com/yn9pnsq/e6Irna09z/artstation-1888117-1613768.png" width="15px">
             </a>
-          </span>
+    </span>
         </div>
         
         <div class="section-bottom">
@@ -86,16 +83,20 @@
         </div>
 
     </div>
+
 </header>
+
 
 <!--
 <body>
+
+<body class = 'mainArtPortion'>
     <div>
         <h1 class = 'artworkText'>Illustrations</h1>
         <hr class = "underline">
     </div>
 
-    <div class = "allArtwork">
+    <div class = 'theGallery'>
     {block:Posts}
     This makes this block of code render for each post the user has
     <section class = 'individualPiece'>
@@ -107,10 +108,128 @@
       {/block:Photo}
 
     </section>
-    {/block:Posts}
+
+
+    <!-- Hopefully rows of artwork -->
+    <div class = 'allArtwork'>
+        {block:Photo}
+        <img class = 'artworkPieces' src = '{PhotoURL-500}' alt = '{PhotoAlt}' onclick='displaySlides(this)'>
+        {/block:Photo}
     </div>
+
+    {/block:Posts}
+
+    </div>
+
+
+    <!-- This will render if there are previos pages -->
+    <!-- So for each previous page -->
+    <!-- {block:NextPage}
+        <div class = 'allArtwork'>
+            {block:Posts}
+            {block:Photo}
+            <img class = 'artworkPieces' src = '{PhotoURL-500}' alt = '{PhotoAlt}' onclick='displaySlides(this)'>
+            {/block:Photo}
+            {/block:Posts}
+            
+        </div>
+    {/block:NextPage} -->
+
+
+
+    <!-- this is the modal view and we dont want it rendered several times -->
+    <div id ='myModal' class = 'modal'>
+        <span class = "close">&times;</span>
+        <a class = "prev" onclick="plusSlides(-1)"><</a>
+        <a class = "next" onclick="plusSlides(1)">></a>
+        <img class ='modal-content' id = 'img'>
+
+        <div id = 'caption'></div>
     
-</body>-->
+    </div>
+
+
+
+    
+
+</body>                 
+
+    <!-- Javascript Script -->
+    <script> 
+    console.log("L")
+      window.onload = function(){ 
+          var modal = document.getElementById("myModal");
+          var img = document.getElementById('artworkPieces');
+          var modalImg = document.getElementById('img');
+          var captionText = document.getElementById('caption');
+       
+          function enlargeimage() {
+              modal.style.display = 'block';
+              modalImg.src = this.src;
+              captionText.innerHTML = this.alt;
+          }
+          var span = document.getElementsByClassName('close')[0];
+          span.onclick = function(){
+              modal.style.display = 'none';
+          }
+
+          //These too functions are what are activated when openening and closing the modal slide show
+          document.displaySlides= function(element){
+            //Opens the slideshow, and procedds to 
+              $("#myModal").fadeIn(500);
+              modal.style.display = 'block';
+              modalImg.src = element.src;
+          }
+
+
+        var slideIndex = 0;
+        // showSlides(slideIndex, false);
+
+        document.plusSlides = function(n) {
+            showSlides(slideIndex += n, true);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n, true);
+        }
+
+        function showSlides(n, plus) {
+        
+            var bool = plus;
+            var i;
+            var slides =  $(".artworkPieces");
+            var dots = $(".artworkPieces");
+            if (n > (slides.length- 1)) {slideIndex = 0;n=0}
+            if (n < 0) {slideIndex = slides.length-1; n = slides.length-1}
+            if (bool){
+                console.log("---")
+                console.log(n)
+                console.log(slideIndex)
+                console.log(slides.length-1)
+                modalImg.src = $(".artworkPieces")[slideIndex].src;
+                return
+            }
+        }
+        //     for (i = 0; i < slides.length; i++) {
+        //         if (bool)
+        // {
+            
+        //     slides[i].style.display = 'none';
+        // }    else {$(slides[i]).fadeOut(200)};
+        //     }
+        //     for (i = 0; i < dots.length; i++) {
+        //     dots[i].className = dots[i].className.replace(" active", "");
+        //     }
+        //     $(slides[slideIndex-1]).fadeIn(200);
+        //     dots[slideIndex-1].className += " active";
+        // }
+
+          function closeModal(){
+              $("myModal").fadeOut(500);
+          }
+      }
+  </script>
+
 
     <!--Embedded CSS Stuff-->
     <style>
@@ -262,27 +381,182 @@
             color: white;
             font-size: 50px;
         }
+
+        .individualPiece{
+            background-color: black;
+        }
         hr.underline{
             align: "left";
             border: none;
             height: 1px;
-            background: red;
-            width: 20%;
+            background: white;
+            width: 35%;
             margin-bottom: 0;
         }
 
         .allArtwork{
-            display: flex;
+            display: inline-block;
             background-color: black;
-            padding-top: 2%;
-
+            margin-top: 2%;
+            margin-left: 2%;
         }
 
-        .individualPiece{
-            background-color: black;
-            padding: 5%;
+        .artworkPieces{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            /* padding-right: 40px; */
+            height:500px;
+            width:500px;
+            object-fit: cover;
+            object-position:50% 50%;
         }
+        .mainArtPortion{
+            background-color: black;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .allArtwork{
+            display: inline-block
+        }
+
         */
+
+
+
+        /* Style the Image Used to Trigger the Modal */
+    #myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (Image) */
+    .modal-content {
+    /* margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content, #caption {
+    animation-name: fadeIn;
+    animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+    /* These are OUR previous and NEXT BUTTON CSS code */
+    .prev, .next {
+    z-index:200;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 0.5rem 1rem;
+    padding-top: 8rem; 
+    margin: 1rem;
+    margin-top: -50px;
+    color: white;
+    font-weight: lighter;
+    font-size: 25px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 50%;
+}
+.prev {
+  left: 0;
+  border-radius: 50%; /*3px 0 0 3px*/
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+  /* background-color: rgba(0, 0, 0, 0.8); */
+}
+
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+        }
+    }
+    @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+
+}
     </style>
 
 </html>
