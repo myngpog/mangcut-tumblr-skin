@@ -19,6 +19,7 @@
     <meta name="text:More Information" content="" />
     <meta name="text:Commissions" content=""/>
     <meta name="text:Illustrations" content=""/>
+    <meta name="text:Vertical Img URL" content=""/>
 
     <!--Social Variables-->
     <meta name="text: Artstation URL" content=""/>
@@ -87,6 +88,7 @@
     </div>
 </header>
 
+<!--
 <body>
     <div>
         <h1 class = 'artworkText'>Illustrations</h1>
@@ -95,10 +97,10 @@
 
     <div class = "allArtwork">
     {block:Posts}
-    <!-- This makes this block of code render for each post the user has -->
+    This makes this block of code render for each post the user has
     <section class = 'individualPiece'>
         {block:Photo} 
-        <!-- This is rendered for each photo inside the posts block -->
+        This is rendered for each photo inside the posts block
         <a href="{Permalink}">
           <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
         </a>
@@ -108,7 +110,7 @@
     {/block:Posts}
     </div>
     
-</body>
+</body>-->
 
     <!--Embedded CSS Stuff-->
     <style>
@@ -120,6 +122,7 @@
             font-weight:400;
         }
         .main-visual{
+            background-position: center center;
             background-image: url("{HeaderImage}");
             width: 100%;
             height: 100%;
@@ -238,7 +241,19 @@
             }
         }
         
+        /*Vertical/Mobile screen sizes*/
+        @media only screen and (max-width: 950px){
+            .about-me{
+                width: 100%;
+                height: 60vh;
+            }
+            .main-visual{
+                background-image: url("{text:Vertical Img URL}");
+            }
+        }
+
         /* Artwork CSS */
+        /*
         .artworkSection{
             background-color: black;
         }
@@ -267,6 +282,7 @@
             background-color: black;
             padding: 5%;
         }
+        */
     </style>
 
 </html>
