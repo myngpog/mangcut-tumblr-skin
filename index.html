@@ -98,14 +98,13 @@
             <h1 class = 'artworkText'>Illustrations</h1>
             <hr class = "underline">
         </div>
-
-        <!-- <div class = 'theGallery'> -->
-
-        <!-- This makes this block of code render for each post the user has -->
-
+        
+        <!-- Block is ran if there is infinite scrolling -->
         {block:IfInfiniteScroll}
+
             <div class = 'allArtwork'>                
-            <div class="autopagerize_page_element">
+            <div class="autopagerize_page_element">            <!-- For each post we create a new image element and procedd to show the image in there -->
+
             {block:Posts}
             {block:Photo}
                 <img class = 'artworkPieces' src = '{PhotoURL-500}' alt = '{PhotoAlt}' onclick='displaySlides(this)'>
@@ -116,10 +115,9 @@
 
         {/block:IfInfiniteScroll}
 
-
+        <!-- This block is rendered if they don't want infinite scrolling -->
+        <!-- But I didn't fully finish this XD, cause infinite scrolliing better -->
         {block:IfNotInfiniteScroll}
-
-        
         {block:Pagination}
         <div id="pagination">
             {block:PreviousPage}
@@ -154,8 +152,6 @@
             <div id = 'caption-content'></div>
         </div>
         </div>
-
-
     </body>                 
 
         <!-- Javascript Script -->
@@ -167,6 +163,7 @@
             var modalImg = document.getElementById('img');
             var captionText = document.getElementById('caption');
         
+            //Functin enlarges the image when the image is clicked on in the modal
             function enlargeimage() {
                 modal.style.display = 'block';
                 modalImg.src = this.src;
