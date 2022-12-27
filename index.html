@@ -86,6 +86,7 @@
 
     </div>
 </header>
+<body>
     <div class = mainDiv>
         <div class = 'artworkHeader'>
             <h1 class = 'artworkText'>Illustrations</h1>
@@ -104,8 +105,8 @@
                     <img class ='modal-content' id = 'img'>
                     <div id="caption-content">
                         <a id = 'date'></a>
-                        {ReblogButton color="white"}
-                        {LikeButton color="white"}
+                        <a id = 'buttons'>{ReblogButton color="white"}
+                        {LikeButton color="white"}</a>
                     </div>
                 </div>
 
@@ -115,6 +116,7 @@
             </div>
         </div>
     </div>
+</body>
     <!--Embedded CSS Stuff-->
     <style>
         * {
@@ -248,7 +250,7 @@
         @media only screen and (max-width: 950px){
             .about-me{
                 width: 100%;
-                height: 60vh;
+                height: 100vh;
             }
             .main-visual{
                 background-image: url("{text:Vertical Img URL}");
@@ -256,43 +258,58 @@
         }
 
         /* Artwork CSS */
+        .artworkHeader{
+            margin-left: 5%;
+        }
         .mainDiv{
             background-color: black;
         }
         .artworkText{
+            font-family: 'Quicksand', sans-serif;
             background-color: black;
             color: white;
-            font-size: 50px;
+            font-size: 40px;
+            padding-top: 10px;
+            padding-bottom: 0.75%;
         }
         .allArtwork{
+            margin-top: 3vh;
+            align-items: center;
             display: inline-block;
             background-color: black;
-            margin-top: 2%;
-            margin-left: 2%;
-
+            margin-right: 5rem;
+            margin-left: 5rem;
         }
         .artworkPieces{
             display: inline-flex;
-            align-items: center;
             justify-content: center;
-            padding: 1%;
-            width: 500px;
-            height: 500px;
+            padding: 15px;
+            width: 50%;
+            height: 250px;
             object-fit: cover;
             object-position: 50% 50%;
         }
         hr.underline{
-            align: "left";
             border: none;
             height: 1px;
             background: white;
-            width: 20%;
-            margin-bottom: 0;
+            animation: separator-width2 1s ease-out forwards;
         }
-
+        @keyframes separator-width2 {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 205px;
+            }
+        }
+        
         #date{
             color: white;
-            padding-right: 70%;
+            text-align: left;
+        }
+        #buttons{
+            text-align: right;
         }
 
         #myImg:hover {opacity: 0.7;}
@@ -311,13 +328,12 @@
             background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
         }
-
         /* Modal Content (Image) */
         .modal-content {
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 20%;
+            width: 35%;
             object-fit: cover;
         }
 
@@ -339,7 +355,7 @@
             animation-name: fadeIn;
             animation-duration: 0.6s;
         }
-        /* These are OUR previous and NEXT BUTTON CSS code */
+        /* These are caleb's previous and NEXT BUTTON CSS code */
         .prev, .next {
             z-index:200;
             cursor: pointer;
@@ -358,7 +374,10 @@
             user-select: none;
             -webkit-user-select: none;
         }
-
+        .autopagerize_page_element{
+            display: inline;
+            width: 500px;
+        }
         /* Position the "next button" to the right */
         .next {
             right: 0;
@@ -379,88 +398,88 @@
         }
     </style>
 
-        <!-- Javascript Script -->
-        <script>
-        window.onload = function(){ 
-            var modal = document.getElementById("myModal");
-            var img = document.getElementById('artworkPieces');
-            var modalImg = document.getElementById('img');
-            var captionText = document.getElementById('caption');
-            var date = document.getElementById('date');
-            $(document).click(function(e){
-                var clickElement = e.target;  // get the dom element clicked.
-                var elementClassName = e.target.className;  // get the classname of the element clicked
-                myModal = document.getElementById("myModal");
-                opacity = window.getComputedStyle(myModal).getPropertyValue("opacity"); //check visibility of modal
+    <!-- Javascript Script -->
+    <script>
+    window.onload = function(){ 
+        var modal = document.getElementById("myModal");
+        var img = document.getElementById('artworkPieces');
+        var modalImg = document.getElementById('img');
+        var captionText = document.getElementById('caption');
+        var date = document.getElementById('date');
+        $(document).click(function(e){
+            var clickElement = e.target;  // get the dom element clicked.
+            var elementClassName = e.target.className;  // get the classname of the element clicked
+            myModal = document.getElementById("myModal");
+            opacity = window.getComputedStyle(myModal).getPropertyValue("opacity"); //check visibility of modal
 
-                //if clicked on modal or image (not next/prev buttons) and the modal is visible, close modal
-                if (elementClassName == "artworkPieces" && opacity==1) {
-                    modal.style.display = "none";
-                }
-                else if (elementClassName == "modal" && opacity==1) {
-                    modal.style.display = "none";
-                };
-                //alert(elementClassName); check class name
-                console.log(elementClassName)
-            });
+            //if clicked on modal or image (not next/prev buttons) and the modal is visible, close modal
+            if (elementClassName == "modal-content" && opacity==1) {
+                closeModal();
+            }
+            else if (elementClassName == "modal" && opacity==1) {
+                closeModal();
+            };
+            //alert(elementClassName); check class name
+            console.log(elementClassName)
+        });
 
-                        
-            //Functin enlarges the image when the image is clicked on in the modal
-            function enlargeimage() {
-                modal.style.display = 'block';
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
-            }
-            var span = document.getElementsByClassName('close')[0];
-            span.onclick = function(){
-                modal.style.display = 'none';
-            }
-        
-            document.updateDetails = function(dateString){
-                console.log(dateString)
-                date.innerHTML = dateString;
-            }
-        
-            //These too functions are what are activated when openening and closing the modal slide show
-            document.displaySlides= function(element){
-            //Opens the slideshow, and procedds to 
-                $("#myModal").fadeIn(500);
-                modal.style.display = 'block';
-                modalImg.src = element.src;
-                date.innerHTML = element.alt;                    
-            }
-            var slideIndex = 0;
-    
-            document.plusSlides = function(n) {
-                showSlides(slideIndex += n, true);
-            }
-    
-            function currentSlide(n) {
-                showSlides(slideIndex = n, true);
-            }
-        
-            function showSlides(n, plus) {
-                var bool = plus;
-                var i;
-                var slides =  $(".artworkPieces");
-                var dots = $(".artworkPieces");
-                if (n > (slides.length- 1)) {slideIndex = 0;n=0}
-                if (n < 0) {slideIndex = slides.length-1; n = slides.length-1}
-                if (bool){
-                    modalImg.src = $(".artworkPieces")[slideIndex].src;
-                    date.innerHTML = $(".artworkPieces")[slideIndex].alt;
-                    return
-                }
-            }
-            function closeModal(){
-                $("myModal").fadeOut(500);
-            }
-    
-            document.body.insertAdjacentHTML( 'beforeEnd', '<iframe id="my-like-frame" style="display:none;"></iframe>' );
-            document.addEventListener( 'click', function ( event ) {
-                var myLike = event.target; 
-                if( myLike.className.indexOf( 'my-like' ) > -1 ) { 
-                var frame = document.getElementById( 'my-like-frame' ), liked = ( myLike.className == 'my-liked' ), command = liked ? 'unlike' : 'like', reblog = myLike.getAttribute( 'data-reblog' ), id = myLike.getAttribute( 'data-id' ), oauth = reblog.slice( -8 ); frame.src = 'https://www.tumblr.com/' + command + '/' + oauth + '?id=' + id; liked ? myLike.className = 'my-like' : myLike.className = 'my-liked'; }; }, false ); 
+                    
+        //Functin enlarges the image when the image is clicked on in the modal
+        function enlargeimage() {
+            modal.style.display = 'block';
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
         }
-        </script>
+        var span = document.getElementsByClassName('close')[0];
+        span.onclick = function(){
+            modal.style.display = 'none';
+        }
+    
+        document.updateDetails = function(dateString){
+            console.log(dateString)
+            date.innerHTML = dateString;
+        }
+    
+        //These too functions are what are activated when openening and closing the modal slide show
+        document.displaySlides= function(element){
+        //Opens the slideshow, and procedds to 
+            $("#myModal").fadeIn(200);
+            modal.style.display = 'block';
+            modalImg.src = element.src;
+            date.innerHTML = element.alt;                    
+        }
+        var slideIndex = 0;
+
+        document.plusSlides = function(n) {
+            showSlides(slideIndex += n, true);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n, true);
+        }
+    
+        function showSlides(n, plus) {
+            var bool = plus;
+            var i;
+            var slides =  $(".artworkPieces");
+            var dots = $(".artworkPieces");
+            if (n > (slides.length- 1)) {slideIndex = 0;n=0}
+            if (n < 0) {slideIndex = slides.length-1; n = slides.length-1}
+            if (bool){
+                modalImg.src = $(".artworkPieces")[slideIndex].src;
+                date.innerHTML = $(".artworkPieces")[slideIndex].alt;
+                return
+            }
+        }
+        function closeModal(){
+            $("#myModal").fadeOut(250);
+        }
+
+        document.body.insertAdjacentHTML( 'beforeEnd', '<iframe id="my-like-frame" style="display:none;"></iframe>' );
+        document.addEventListener( 'click', function ( event ) {
+            var myLike = event.target; 
+            if( myLike.className.indexOf( 'my-like' ) > -1 ) { 
+            var frame = document.getElementById( 'my-like-frame' ), liked = ( myLike.className == 'my-liked' ), command = liked ? 'unlike' : 'like', reblog = myLike.getAttribute( 'data-reblog' ), id = myLike.getAttribute( 'data-id' ), oauth = reblog.slice( -8 ); frame.src = 'https://www.tumblr.com/' + command + '/' + oauth + '?id=' + id; liked ? myLike.className = 'my-like' : myLike.className = 'my-liked'; }; }, false ); 
+    }
+    </script>
 </html>
