@@ -1,4 +1,3 @@
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,9 @@
     <meta name="if:Infinite Scroll" content="0">
 
 
+    <!-- Infinite Scroll Begin -->
+    <script src="https://matthewrayfield.github.io/tumblr-infinite-scrolling/infinitescrolling.js"></script>
+    <!-- Infinite Scroll END -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
-
-
-                
+    
     <!-- Variables -->
     <meta name="text:Your Name" content="" />
     <meta name="text:More Information" content="" />
@@ -26,205 +26,96 @@
     <meta name="text:Illustrations" content=""/>
     <meta name="text:Vertical Img URL" content=""/>
 
-    <!-- <a href="{ReblogURL}">reblog</a> -->
-
-
     <!--Social Variables-->
     <meta name="text: Artstation URL" content=""/>
     <meta name="text: Twitter URL" content=""/>
     <meta name="text: Facebook URL" content=""/>
     <meta name="text: Pixiv URL" content=""/>
     <meta name="text: Instagram URL" content=""/>
-    {block:IfInfiniteScroll}
-        <script src="https://matthewrayfield.github.io/tumblr-infinite-scrolling/infinitescrolling.js"></script>
-    {/block:IfInfiniteScroll}
 
-
-</head> 
-<header>   
+</head>
+<header>
+    
     <div class="main-visual"></div>
-                
-         <div class="about-me">
+    
+    <div class="about-me">
 
-            <img class="ab-me" src="{Favicon}" alt="about-me-pfp">
-                    
-            <div class="description">
-                <div class ="name">
-                    <a href="/">{text:Your Name}</a>
-                </div>
-                <h6 class="info">{text:More Information}</h6>
+        <img class="ab-me" src="{Favicon}" alt="about-me-pfp">
+        
+        <div class="description">
+            <div class ="name">
+                <a href="/">{text:Your Name}</a>
             </div>
-                    
-            <hr class="header-seperator">
+            <h6 class="info">{text:More Information}</h6>
+        </div>
+        
+        <hr class="header-seperator">
 
-            <div class="main-nav">          
-                <span><a href={text: Illustrations}>Illustrations</a></span>
-                <span><a href={text: Commissions}>Commissions</a></span>
-            </div>
-
-            <div class="social">
-                <span id="twitter">
-                    <a href="{text: Twitter URL}" target="_blank">
-                    <img src="https://static.tumblr.com/xlsgtjb/BBuned82o/icon-twitter.svg" width="13px">
-                    </a>
-                </span>
-                <span id="instagram">
-                    <a href="{text: Instagram URL}" target="_blank">
-                    <img src="https://static.tumblr.com/yn9pnsq/e1krna050/87390.png" width="13px">
-                    </a>
-                </span>
-                <span id="pixiv">
-                    <a href="{text: Pixiv URL}" target="_blank">
-                    <img src="https://static.tumblr.com/xlsgtjb/gAened81u/icon-pixiv.svg" width="13px">
-                    </a>
-                </span>
-                <span id="artstation">
-                    <a href="{text: Artstation URL}" target="_blank">
-                    <img src="https://static.tumblr.com/yn9pnsq/e6Irna09z/artstation-1888117-1613768.png" width="15px">
-                    </a>
-                </span>
-            </div>
-                    
-            <div class="section-bottom">
-                <span><a href="/archive">Archive</a></span>
-                <span><a href="/faqs">FAQs</a></span>
-            </div>
-
+        <div class="main-nav">          
+            <span><a href={text: Illustrations}>Illustrations</a></span>
+            <span><a href={text: Commissions}>Commissions</a></span>
         </div>
 
+        <div class="social">
+          <span id="twitter">
+            <a href="{text: Twitter URL}" target="_blank">
+            <img src="https://static.tumblr.com/xlsgtjb/BBuned82o/icon-twitter.svg" width="13px">
+            </a>
+          </span>
+          <span id="instagram">
+            <a href="{text: Instagram URL}" target="_blank">
+            <img src="https://static.tumblr.com/yn9pnsq/e1krna050/87390.png" width="13px">
+            </a>
+          </span>
+          <span id="pixiv">
+            <a href="{text: Pixiv URL}" target="_blank">
+              <img src="https://static.tumblr.com/xlsgtjb/gAened81u/icon-pixiv.svg" width="13px">
+            </a>
+          </span>
+          <span id="artstation">
+            <a href="{text: Artstation URL}" target="_blank">
+              <img src="https://static.tumblr.com/yn9pnsq/e6Irna09z/artstation-1888117-1613768.png" width="15px">
+            </a>
+          </span>
+        </div>
+        
+        <div class="section-bottom">
+          <span><a href="/archive">Archive</a></span>
+          <span><a href="/faqs">FAQs</a></span>
+        </div>
+
+    </div>
 </header>
-<body class = 'mainArtPortion'>
-        <div id = 'artworkHeader'>
+    <div class = mainDiv>
+        <div class = 'artworkHeader'>
             <h1 class = 'artworkText'>Illustrations</h1>
             <hr class = "underline">
-         </div>
-                
-        <!-- Block is ran if there is infinite scrolling -->
-        {block:IfInfiniteScroll}
-        <div class = 'allArtwork'>       
-            <div class="autopagerize_page_element">            
-                <!-- For each post we create a new image element and procedd to show the image in there -->
+        </div>
+        
+        <div class = "allArtwork">
+            <div class="autopagerize_page_element">
                 {block:Posts}
                 {block:Photo}
-                {block:Date}
-                <div  class = 'wrapper'>
-                    <img class = 'artworkPieces' src = '{PhotoURL-500}' alt = '{ShortMonth} {DayOfMonth}{DayOfMonthSuffix} {Year}' onclick='displaySlides(this)'>
-                    <!-- <div class="my-like" data-reblog="{ReblogURL}" data-id="{PostID}" title="Like"></div> -->
-                    <div class = 'caption-data'>
-                        <a id = 'theDate'>{ShortMonth} {DayOfMonth}{DayOfMonthSuffix} {ShortYear}</a>
-                        {ReblogButton color="grey"}
-                        {LikeButton color="grey" size = 40}
+
+                <div id ='myModal' class = 'modal'>
+                    <span class = "close">&times;</span>
+                    <a class = "prev" onclick="plusSlides(-1)"><</a>
+                    <a class = "next" onclick="plusSlides(1)">></a>
+                    <img class ='modal-content' id = 'img'>
+                    <div id="caption-content">
+                        <a id = 'date'></a>
+                        {ReblogButton color="white"}
+                        {LikeButton color="white"}
                     </div>
                 </div>
-                {/block:Date}
-                {/block:Photo}
+
+                <img class = 'artworkPieces' src = "{PhotoURL-500}" alt = "{ShortMonth} {DayOfMonth}{DayOfMonthSuffix} {Year}" onclick='displaySlides(this)'>
+                {/block:Photo}   
                 {/block:Posts}
             </div>
         </div>
-        
-        {/block:IfInfiniteScroll}
-        <!-- This block is rendered if they don't want infinite scrolling -->
-        <!-- But I didn't fully finish this XD, cause infinite scrolliing better -->
-        {block:IfNotInfiniteScroll}
-        {block:Pagination}
-        <div id="pagination">
-            {block:PreviousPage}
-            <a href="{PreviousPage}">Previous</a>
-                {/block:PreviousPage}
-                {block:JumpPagination length="5"}
-                {block:CurrentPage}
-                <span class="current_page">{PageNumber}</span>
-                    {/block:CurrentPage}
-                    {block:JumpPage}
-                    <a class="jump_page" href="{URL}">{PageNumber}</a>
-                    {/block:JumpPage}
-                    {/block:JumpPagination}
-                    {block:NextPage}
-                    <a href="{NextPage}">Next</a>
-                    {/block:NextPage}
-        </div>
-        {/block:Pagination}
-        {/block:IfNotInfiniteScroll}
-
-
-        <!-- this is the modal view and we dont want it rendered several times -->
-        <div id ='myModal' class = 'modal'>
-            <span class = "close">&times;</span>
-                <a class = "prev" onclick="plusSlides(-1)"><</a>
-                <a class = "next" onclick="plusSlides(1)">></a>
-                <img class ='modal-content' id = 'img'>
-        </div>
-</body>                 
-<!-- Javascript Script -->
-<script>    
-    console.log("L")
-    window.onload = function(){ 
-    var modal = document.getElementById("myModal");
-    var img = document.getElementById('artworkPieces');
-    var modalImg = document.getElementById('img');
-    var captionText = document.getElementById('caption');
-    var date = document.getElementById('date');
-                
-    //Functin enlarges the image when the image is clicked on in the modal
-    function enlargeimage() {
-        modal.style.display = 'block';
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-        }
-        var span = document.getElementsByClassName('close')[0];
-            span.onclick = function(){
-            modal.style.display = 'none';
-        }
-
-        document.updateDetails = function(dateString){
-            console.log(dateString)
-            date.innerHTML = dateString;
-        }
-
-        //These too functions are what are activated when openening and closing the modal slide show
-        document.displaySlides= function(element){
-        //Opens the slideshow, and procedds to 
-            $("#myModal").fadeIn(500);
-            modal.style.display = 'block';
-            modalImg.src = element.src;
-            date.innerHTML = element.alt;                    
-        }
-        var slideIndex = 0;
-        // showSlides(slideIndex, false);
-
-        document.plusSlides = function(n) {
-            showSlides(slideIndex += n, true);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n, true);
-        }
-
-        function showSlides(n, plus) {
-            var bool = plus;
-            var i;
-            var slides =  $(".artworkPieces");
-            var dots = $(".artworkPieces");
-            if (n > (slides.length- 1)) {slideIndex = 0;n=0}
-            if (n < 0) {slideIndex = slides.length-1; n = slides.length-1}
-            if (bool){
-                modalImg.src = $(".artworkPieces")[slideIndex].src;
-                date.innerHTML = $(".artworkPieces")[slideIndex].alt;
-                return
-            }
-        }
-        function closeModal(){
-            $("myModal").fadeOut(500);
-        }
-
-        document.body.insertAdjacentHTML( 'beforeEnd', '<iframe id="my-like-frame" style="display:none;"></iframe>' );
-        document.addEventListener( 'click', function ( event ) {
-            var myLike = event.target; 
-            if( myLike.className.indexOf( 'my-like' ) > -1 ) { 
-            var frame = document.getElementById( 'my-like-frame' ), liked = ( myLike.className == 'my-liked' ), command = liked ? 'unlike' : 'like', reblog = myLike.getAttribute( 'data-reblog' ), id = myLike.getAttribute( 'data-id' ), oauth = reblog.slice( -8 ); frame.src = 'https://www.tumblr.com/' + command + '/' + oauth + '?id=' + id; liked ? myLike.className = 'my-like' : myLike.className = 'my-liked'; }; }, false ); 
-            }
-</script>
-<!--Embedded CSS Stuff-->
+    </div>
+    <!--Embedded CSS Stuff-->
     <style>
         * {
             margin: 0;
@@ -365,7 +256,7 @@
         }
 
         /* Artwork CSS */
-        .artworkSection{
+        .mainDiv{
             background-color: black;
         }
         .artworkText{
@@ -373,70 +264,35 @@
             color: white;
             font-size: 50px;
         }
-
-        .individualPiece{
-            background-color: black;
-        }
-        hr.underline{
-            /* align: "left"; Maybe change this to align items once everything is done or delete */
-            border: none;
-            height: 1px;
-            background: white;
-            width: 25%;
-            margin-bottom: 0;
-        }
-
         .allArtwork{
             display: inline-block;
             background-color: black;
             margin-top: 2%;
             margin-left: 2%;
-        }
 
+        }
         .artworkPieces{
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 1%;
-            height:500px;
+            width: 500px;
+            height: 500px;
             object-fit: cover;
-            object-position:50% 50%;
+            object-position: 50% 50%;
         }
-        .mainArtPortion{
-            background-color: black;
-            align-items: center;
-            justify-content: center;
+        hr.underline{
+            align: "left";
+            border: none;
+            height: 1px;
+            background: white;
+            width: 20%;
+            margin-bottom: 0;
         }
 
-        #artworkHeader{
-            margin-left: 5%;
-        }
-
-        .allArtwork{
-            display: inline-block
-        }
-        .tumblrAutoPager_page_info{
-            display: inline-flex;
-        }
-        #theDate{
+        #date{
             color: white;
-        }
-
-        .caption-data{
-            display: inline-flex;
-        }
-        .wrapper{
-            display: inline-grid;
-            padding: .5%;
-        }
-
-        
-
-        /* Style the Image Used to Trigger the Modal */
-        #myImg {
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
+            padding-right: 70%;
         }
 
         #myImg:hover {opacity: 0.7;}
@@ -468,7 +324,8 @@
         /* Caption of Modal Image (Image Text) - Same Width as the Image */
         #caption-content {
             margin: auto;
-            display: block;
+            display: flex;
+            align-items: center;
             width: 80%;
             max-width: 700px;
             text-align: center;
@@ -482,30 +339,6 @@
             animation-name: fadeIn;
             animation-duration: 0.6s;
         }
-
-        @keyframes zoom {
-            from {transform:scale(0)}
-            to {transform:scale(1)}
-        }
-
-        /* The Close Button */
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
         /* These are OUR previous and NEXT BUTTON CSS code */
         .prev, .next {
             z-index:200;
@@ -544,38 +377,90 @@
             cursor: pointer;
             /* background-color: rgba(0, 0, 0, 0.8); */
         }
-
-        /* 100% Image Width on Smaller Screens */
-        @media only screen and (max-width: 700px) {
-            .modal-content {
-                width: 100%;
-                }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Maybe can delete check later */
-        .my-like { 
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAARCAYAAAA/mJfHAAABH0lEQVQ4y62T30vCUBiGv/9YuhBLkCA08FdogRFFYFEUhhZNCCQoSESiIOii68pl5qV6s8Eb7+SMHXNs6S7ejZ3zvA+ccT4BICofvS88dJ7w8vqG8WQC754K17lPjrx3z3l8D4YoVaqIrWbcJNbzaHefNZjfXPdy5b0jsO/IRqMxUpmSBnhz2bx1QL79GPbpEePmzhdSyW8fBDL0SK68HwiGCT2S3NiKREaPzP7QRRNPZSHpwm4kMnqkYbQikdEjZv8HK2ubS4nY75mD6WU8qzeXkrHvToBlWSjuHC4kYo99V8bwBnM0/iMiz542myq2bSPskcmR/zPos7lvP8Lv/nGd+/N6c2Xq2KcXhiY6qV1rxwotU3n/NHF8fgW+g9hfsHJlJUYljcgAAAAASUVORK5CYII=) !important; 
-            height:17px; 
-            width:19px; 
-            cursor:pointer; 
-            float: left;
-            clear: left;
-            display:inline-block; 
-            vertical-align:top; 
-            padding: 1%;
-        } 
-
-        .my-liked, .my-like:hover { 
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAARCAYAAAA/mJfHAAABSklEQVQ4y2P4//8/Awy/O3fu/905c/4/2779/69Pn/4jy8Hwz/fv/z/buvX/vfnz/7+/eBFFDZj4cOXK/8O+Pv+36+rA8W4zs/8Ply1DUXx/4cL/u0yMUdQdCQ76/+nWLbA6hq+PH//fbW6OogAZ3+zvByu81t6OU80ea6v/P16//s9wqboKpyIYPhYeTlDN1abG/wz7HR0JKiQGH3Bz+8+ww0CfKobtMjb6z0ANg+CGgQKPKt50dfnPcL6wkCqGXaoo/8/w5tgxyg3T0wUnYHBiPJuZSZFhF8pK/8NzACjrgKKWHINAOef3168Iw0D429OnGFmKEAZlJVDKR8mbMAyy4XRqClEGnc3J+f/nxw/MjI6OQflxh6EBzvR0Z9o0rCUKVsNA+MuD+/9PJiSgGHQmPf0/KDhw6cFpGAy/OnAAbOibEyf+E1ILAFBjDrchm7KrAAAAAElFTkSuQmCC) !important; 
-            height:17px; 
-            width:19px; 
-            cursor:pointer; 
-            display:inline-block; 
-            vertical-align:top; 
-        }
     </style>
+
+        <!-- Javascript Script -->
+        <script>
+        window.onload = function(){ 
+            var modal = document.getElementById("myModal");
+            var img = document.getElementById('artworkPieces');
+            var modalImg = document.getElementById('img');
+            var captionText = document.getElementById('caption');
+            var date = document.getElementById('date');
+            $(document).click(function(e){
+                var clickElement = e.target;  // get the dom element clicked.
+                var elementClassName = e.target.className;  // get the classname of the element clicked
+                myModal = document.getElementById("myModal");
+                opacity = window.getComputedStyle(myModal).getPropertyValue("opacity"); //check visibility of modal
+
+                //if clicked on modal or image (not next/prev buttons) and the modal is visible, close modal
+                if (elementClassName == "artworkPieces" && opacity==1) {
+                    modal.style.display = "none";
+                }
+                else if (elementClassName == "modal" && opacity==1) {
+                    modal.style.display = "none";
+                };
+                //alert(elementClassName); check class name
+                console.log(elementClassName)
+            });
+
+                        
+            //Functin enlarges the image when the image is clicked on in the modal
+            function enlargeimage() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+            var span = document.getElementsByClassName('close')[0];
+            span.onclick = function(){
+                modal.style.display = 'none';
+            }
+        
+            document.updateDetails = function(dateString){
+                console.log(dateString)
+                date.innerHTML = dateString;
+            }
+        
+            //These too functions are what are activated when openening and closing the modal slide show
+            document.displaySlides= function(element){
+            //Opens the slideshow, and procedds to 
+                $("#myModal").fadeIn(500);
+                modal.style.display = 'block';
+                modalImg.src = element.src;
+                date.innerHTML = element.alt;                    
+            }
+            var slideIndex = 0;
+    
+            document.plusSlides = function(n) {
+                showSlides(slideIndex += n, true);
+            }
+    
+            function currentSlide(n) {
+                showSlides(slideIndex = n, true);
+            }
+        
+            function showSlides(n, plus) {
+                var bool = plus;
+                var i;
+                var slides =  $(".artworkPieces");
+                var dots = $(".artworkPieces");
+                if (n > (slides.length- 1)) {slideIndex = 0;n=0}
+                if (n < 0) {slideIndex = slides.length-1; n = slides.length-1}
+                if (bool){
+                    modalImg.src = $(".artworkPieces")[slideIndex].src;
+                    date.innerHTML = $(".artworkPieces")[slideIndex].alt;
+                    return
+                }
+            }
+            function closeModal(){
+                $("myModal").fadeOut(500);
+            }
+    
+            document.body.insertAdjacentHTML( 'beforeEnd', '<iframe id="my-like-frame" style="display:none;"></iframe>' );
+            document.addEventListener( 'click', function ( event ) {
+                var myLike = event.target; 
+                if( myLike.className.indexOf( 'my-like' ) > -1 ) { 
+                var frame = document.getElementById( 'my-like-frame' ), liked = ( myLike.className == 'my-liked' ), command = liked ? 'unlike' : 'like', reblog = myLike.getAttribute( 'data-reblog' ), id = myLike.getAttribute( 'data-id' ), oauth = reblog.slice( -8 ); frame.src = 'https://www.tumblr.com/' + command + '/' + oauth + '?id=' + id; liked ? myLike.className = 'my-like' : myLike.className = 'my-liked'; }; }, false ); 
+        }
+        </script>
 </html>
