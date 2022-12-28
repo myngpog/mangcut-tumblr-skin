@@ -104,10 +104,9 @@
                     <a class = "prev" onclick="plusSlides(-1)"><</a>
                     <a class = "next" onclick="plusSlides(1)">></a>
                     <img class ='modal-content' id = 'img'>
-                    <div id="caption-content">
+                    <div class="caption-content">
                         <a id = 'date'></a>
-                        <a id = 'buttons'>{ReblogButton color="white"}
-                        {LikeButton color="white"}</a>
+                        <a id = 'buttons'>{ReblogButton color="white"}{LikeButton color="white"}</a>
                     </div>
                 </div>
 
@@ -270,7 +269,7 @@
 
         /* Artwork CSS */
         .artworkHeader{
-            margin-left: 5%;
+            margin-left: 7.5%;
         }
         .mainDiv{
             background-color: hsla(0, 0%, 0%, .65);
@@ -313,25 +312,16 @@
                 width: 205px;
             }
         }
-        @media screen and (max-width: 425px){
-            .artworkPieces{
-                height: 250px;
-                width: 300px;
-            }
-        }
-        @media screen and (max-width: 300px){
-            .artworkPieces{
-                height: 200px;
-                width: 250px;
-            }
-        }
         
         #date{
+            margin: start;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: lighter;
             color: white;
-            text-align: left;
         }
+
         #buttons{
-            text-align: right;
+            margin: end;
         }
 
         #myImg:hover {opacity: 0.7;}
@@ -353,23 +343,20 @@
         /* Modal Content (Image) */
         .modal-content {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 30%;
+            margin: auto;
+            width: 400px;
             object-fit: cover;
         }
 
         /* Caption of Modal Image (Image Text) - Same Width as the Image */
-        #caption-content {
-            margin: auto;
-            display: flex;
-            align-items: center;
-            width: 80%;
-            max-width: 700px;
-            text-align: center;
+        .caption-content {
+            padding-top: 1%;
+            display: inline-flex;
+            width: 400px;
             color: #ccc;
-            padding: 10px 0;
-            height: 150px;
+        }
+        .caption-content a{
+            display: block;
         }
 
         /* Add Animation - Zoom in the Modal */
@@ -385,7 +372,6 @@
             top: 50%;
             width: auto;
             padding: 0.5rem 1rem;
-            padding-top: 8rem; 
             margin: 1rem;
             margin-top: -50px;
             color: white;
@@ -413,6 +399,30 @@
             text-decoration: none;
             cursor: pointer;
             /* background-color: rgba(0, 0, 0, 0.8); */
+        }
+        @media screen and (max-width: 425px){
+            .artworkPieces{
+                height: 250px;
+                width: 300px;
+            }
+            .modal-content{
+                width: 300px;
+            }
+            #caption-content{
+                width: 300px;
+            }
+        }
+        @media screen and (max-width: 300px){
+            .artworkPieces{
+                height: 200px;
+                width: 250px;
+            }
+            .modal-content{
+                width: 250px;
+            }
+            #caption-content{
+                width: 250px;
+            }
         }
     </style>
 
