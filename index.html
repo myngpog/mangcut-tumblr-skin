@@ -4,10 +4,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta name="if:Infinite Scroll" content="0">
 
-
     <!-- Infinite Scroll Begin -->
     <script src="https://matthewrayfield.github.io/tumblr-infinite-scrolling/infinitescrolling.js"></script>
     <!-- Infinite Scroll END -->
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,7 @@
     <meta name="text: Facebook URL" content=""/>
     <meta name="text: Pixiv URL" content=""/>
     <meta name="text: Instagram URL" content=""/>
+    <meta name="text: Links" content=""/>
 
 </head>
 <header>
@@ -41,7 +42,7 @@
     <div class="about-me">
 
         <img class="ab-me" src="{Favicon}" alt="about-me-pfp">
-        
+
         <div class="description">
             <div class ="name">
                 <a href="/">{text:Your Name}</a>
@@ -52,7 +53,7 @@
         <hr class="header-seperator">
 
         <div class="main-nav">          
-            <span><a href={text: Illustrations}>Illustrations</a></span>
+            <span><a id = "illustration">Illustrations</a></span>
             <span><a href={text: Commissions}>Commissions</a></span>
         </div>
 
@@ -81,15 +82,21 @@
         
         <div class="section-bottom">
           <span><a href="/archive">Archive</a></span>
-          <span><a href="/faqs">FAQs</a></span>
+          <span><a href="{text: Links}">Links</a></span>
         </div>
+        <span id = "arrow">
+            <a>
+                <img src="https://static.tumblr.com/yn9pnsq/5SOrnmv37/arrow-down-2-icon.png" width="35px"></img>
+            </a>
+        </span>
 
     </div>
 </header>
-    <div class = mainDiv>
-        <div class = 'artworkHeader'>
-            <h1 class = 'artworkText'>Illustrations</h1>
-            <hr class = "underline">
+<body>
+    <div id = "mainDiv">
+        <div id = 'artworkHeader'>
+            <h1 id = 'artworkText'>Illustrations</h1>
+            <hr id = "underline">
         </div>
         
         <div class = "allArtwork">
@@ -102,10 +109,12 @@
                     <a class = "prev" onclick="plusSlides(-1)"><</a>
                     <a class = "next" onclick="plusSlides(1)">></a>
                     <img class ='modal-content' id = 'img'>
-                    <div id="caption-content">
+                    <div class="caption-content">
                         <a id = 'date'></a>
-                        {ReblogButton color="white"}
-                        {LikeButton color="white"}
+                        <div class="right-side">
+                            <a id='button1'>{ReblogButton color="white"}</a>
+                            <a id='button2'>{LikeButton color="white"}</a>
+                        </div>
                     </div>
                 </div>
 
@@ -115,6 +124,7 @@
             </div>
         </div>
     </div>
+</body>
     <!--Embedded CSS Stuff-->
     <style>
         * {
@@ -125,13 +135,14 @@
             font-weight:400;
         }
         .main-visual{
+            background-attachment: fixed;
             background-position: center center;
             background-image: url("{HeaderImage}");
             width: 100%;
             height: 100%;
             overflow: hidden;
             background-size: cover;
-            position: absolute;
+            position: fixed;
             background-repeat: no-repeat;
             z-index: -1;
         }
@@ -195,9 +206,16 @@
         .social a:hover{
             background: rgb(152, 160, 160)
         }
+        #arrow{
+            padding-top: 1%;
+        }
+        #arrow:hover img{
+            content: url(https://static.tumblr.com/yn9pnsq/9durnmv8t/arrow-down-2-icon-gray.png)
+        }
         .main-nav{
             padding-bottom: 5px;
             border-radius: 50%;
+            cursor: pointer;
         }
         .main-nav a{
             font-family: 'Quicksand', sans-serif;
@@ -207,7 +225,8 @@
             padding-left: 12px;
         }
         .main-nav a:hover{
-            color:rgb(204, 204, 204)
+            color:rgb(204, 204, 204);
+            
         }
         .section-bottom a{
             color: white;
@@ -243,57 +262,79 @@
                 width: 180px;
             }
         }
-        
-        /*Vertical/Mobile screen sizes*/
-        @media only screen and (max-width: 950px){
-            .about-me{
-                width: 100%;
-                height: 60vh;
+
+        @keyframes scroll-transition {
+            0% {
+                width: 0%
             }
-            .main-visual{
-                background-image: url("{text:Vertical Img URL}");
+            100% {
+                width: 100%
             }
         }
 
         /* Artwork CSS */
-        .mainDiv{
-            background-color: black;
+        #artworkHeader{
+            padding-top: 1%;
+            margin-left: 7.5%;
         }
-        .artworkText{
-            background-color: black;
+        #mainDiv{
+            min-height: 100vh;
+            background-color: hsla(0, 0%, 0%, .65);
+        }
+        #artworkText{
+            font-family: 'Quicksand', sans-serif;
             color: white;
-            font-size: 50px;
+            font-size: 40px;
+            padding-top: 10px;
+            padding-bottom: 0.75%;
         }
         .allArtwork{
-            display: inline-block;
-            background-color: black;
+            width: 92%;
+            margin-top: 3vh;
+            background-color: transparent;
+            margin: auto;
+        }
+        .autopagerize_page_element{
             margin-top: 2%;
-            margin-left: 2%;
-
+            text-align: center;
         }
         .artworkPieces{
             display: inline-flex;
-            align-items: center;
-            justify-content: center;
             padding: 1%;
-            width: 500px;
-            height: 500px;
+            height: 300px;
+            width: 400px;
             object-fit: cover;
-            object-position: 50% 50%;
         }
-        hr.underline{
-            align: "left";
+        hr#underline{
             border: none;
             height: 1px;
             background: white;
-            width: 20%;
-            margin-bottom: 0;
+            animation: separator-width2 1s ease-out forwards;
+        }
+        @keyframes separator-width2 {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 205px;
+            }
+        }
+        
+        #date{
+            left: 0;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: lighter;
+            color: white;
         }
 
-        #date{
-            color: white;
-            padding-right: 70%;
+        .right-side{
+            display: inline-flex;
+            margin-left: auto;
         }
+        .reblog_button{
+            margin-right: 15px;
+        }
+
 
         #myImg:hover {opacity: 0.7;}
 
@@ -311,27 +352,24 @@
             background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
         }
-
         /* Modal Content (Image) */
         .modal-content {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 20%;
+            margin: auto;
+            width: 400px;
             object-fit: cover;
         }
 
         /* Caption of Modal Image (Image Text) - Same Width as the Image */
-        #caption-content {
-            margin: auto;
-            display: flex;
-            align-items: center;
-            width: 80%;
-            max-width: 700px;
-            text-align: center;
+        .caption-content {
+            padding-top: 1%;
+            display: inline-flex;
+            width: 400px;
             color: #ccc;
-            padding: 10px 0;
-            height: 150px;
+            padding-bottom: 2%;
+        }
+        .caption-content a{
+            display: block;
         }
 
         /* Add Animation - Zoom in the Modal */
@@ -339,7 +377,7 @@
             animation-name: fadeIn;
             animation-duration: 0.6s;
         }
-        /* These are OUR previous and NEXT BUTTON CSS code */
+        /* These are caleb's previous and NEXT BUTTON CSS code */
         .prev, .next {
             z-index:200;
             cursor: pointer;
@@ -347,7 +385,6 @@
             top: 50%;
             width: auto;
             padding: 0.5rem 1rem;
-            padding-top: 8rem; 
             margin: 1rem;
             margin-top: -50px;
             color: white;
@@ -358,7 +395,6 @@
             user-select: none;
             -webkit-user-select: none;
         }
-
         /* Position the "next button" to the right */
         .next {
             right: 0;
@@ -377,90 +413,518 @@
             cursor: pointer;
             /* background-color: rgba(0, 0, 0, 0.8); */
         }
+        @media screen and (min-width: 2000px) {
+            .artworkPieces{
+                height: 350px;
+                width: 500px;
+            }
+            .modal-content{
+                width: 800px;
+            }
+            .caption-content{
+                width: 800px;
+            }
+        }
+        @media screen and (max-width: 1500px){
+            .artworkPieces{
+                height: 270px;
+                width: 320px;
+            }
+        }
+        @media screen and (max-width: 500px){
+            .modal-content{
+                width: 375px;
+            }
+            .caption-content{
+                width: 375px;
+            }
+        }
+        @media screen and (max-width: 425px){
+            .artworkPieces{
+                height: 250px;
+                width: 300px;
+            }
+            .modal-content{
+                width: 300px;
+            }
+            .caption-content{
+                width: 300px;
+            }
+        }
+        @media screen and (max-width: 300px){
+            .artworkPieces{
+                height: 200px;
+                width: 250px;
+            }
+            .modal-content{
+                width: 150px;
+            }
+            .caption-content{
+                width: 150px;
+            }
+        }
+
+                /*Vertical/Mobile screen sizes*/
+        @media screen and (max-width: 950px){
+            .about-me{
+                width: 100%;
+                height: 100vh;
+            }
+            .main-visual{
+                background-image: url("{text:Vertical Img URL}");
+            }
+        }
+
+        htnml {
+            scroll-behavior: smooth;
+        }
+
+        htnml {
+            scroll-behavior: smooth;
+        }
     </style>
 
-        <!-- Javascript Script -->
-        <script>
-        window.onload = function(){ 
-            var modal = document.getElementById("myModal");
-            var img = document.getElementById('artworkPieces');
-            var modalImg = document.getElementById('img');
-            var captionText = document.getElementById('caption');
-            var date = document.getElementById('date');
-            $(document).click(function(e){
-                var clickElement = e.target;  // get the dom element clicked.
-                var elementClassName = e.target.className;  // get the classname of the element clicked
-                myModal = document.getElementById("myModal");
-                opacity = window.getComputedStyle(myModal).getPropertyValue("opacity"); //check visibility of modal
+    <!-- Javascript Script -->
+    <script>
+    window.onload = function(){ 
+        var illustrationButton = document.getElementById('illustration')
+        var modal = document.getElementById("myModal");
+        var img = document.getElementById('artworkPieces');
+        var modalImg = document.getElementById('img');
+        var captionText = document.getElementById('caption');
+        var date = document.getElementById('date');
+        var arrow = document.getElementById('arrow')
+        $(document).click(function(e){
+            var clickElement = e.target;  // get the dom element clicked.
+            var elementClassName = e.target.className;  // get the classname of the element clicked
+            myModal = document.getElementById("myModal");
+            opacity = window.getComputedStyle(myModal).getPropertyValue("opacity"); //check visibility of modal
 
-                //if clicked on modal or image (not next/prev buttons) and the modal is visible, close modal
-                if (elementClassName == "artworkPieces" && opacity==1) {
-                    modal.style.display = "none";
+            //if clicked on modal or image (not next/prev buttons) and the modal is visible, close modal
+            if (elementClassName == "modal-content" && opacity==1) {
+                closeModal();
+            }
+            else if (elementClassName == "modal" && opacity==1) {
+                closeModal();
+            };
+            //alert(elementClassName); check class name
+            console.log(elementClassName)
+        });
+
+        arrow.onclick = function(){
+            console.log('pog')
+            let artworkText = document.getElementById('artworkText')
+            zenscroll.to(artworkText)
+        }
+        illustrationButton.onclick = function() {
+            zenscroll.to(artworkText)
+        }
+      
+        //Functin enlarges the image when the image is clicked on in the modal
+        function enlargeimage() {
+            modal.style.display = 'block';
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+        var span = document.getElementsByClassName('close')[0];
+        span.onclick = function(){
+            modal.style.display = 'none';
+        }
+    
+        document.updateDetails = function(dateString){
+            console.log(dateString)
+            date.innerHTML = dateString;
+        }
+    
+        //These too functions are what are activated when openening and closing the modal slide show
+        document.displaySlides= function(element){
+        //Opens the slideshow, and procedds to 
+            $("#myModal").fadeIn(200);
+            modal.style.display = 'block';
+            modalImg.src = element.src;
+            date.innerHTML = element.alt;                    
+        }
+        var slideIndex = 0;
+
+        document.plusSlides = function(n) {
+            showSlides(slideIndex += n, true);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n, true);
+        }
+    
+        function showSlides(n, plus) {
+            var bool = plus;
+            var i;
+            var slides =  $(".artworkPieces");
+            var dots = $(".artworkPieces");
+            if (n > (slides.length- 1)) {slideIndex = 0;n=0}
+            if (n < 0) {slideIndex = slides.length-1; n = slides.length-1}
+            if (bool){
+                modalImg.src = $(".artworkPieces")[slideIndex].src;
+                date.innerHTML = $(".artworkPieces")[slideIndex].alt;
+                return
+            }
+        }
+        function closeModal(){
+            $("#myModal").fadeOut(250);
+        }
+    }           
+    </script>
+    <script>
+        /**
+         * 
+     * Zenscroll 4.0.2
+     * https://github.com/zengabor/zenscroll/
+     *
+     * Copyright 2015–2018 Gabor Lenard
+     *
+     * This is free and unencumbered software released into the public domain.
+     * 
+     * Anyone is free to copy, modify, publish, use, compile, sell, or
+     * distribute this software, either in source code form or as a compiled
+     * binary, for any purpose, commercial or non-commercial, and by any
+     * means.
+     * 
+     * In jurisdictions that recognize copyright laws, the author or authors
+     * of this software dedicate any and all copyright interest in the
+     * software to the public domain. We make this dedication for the benefit
+     * of the public at large and to the detriment of our heirs and
+     * successors. We intend this dedication to be an overt act of
+     * relinquishment in perpetuity of all present and future rights to this
+     * software under copyright law.
+     * 
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+     * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+     * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+     * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+     * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+     * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+     * OTHER DEALINGS IN THE SOFTWARE.
+     * 
+     * For more information, please refer to <http://unlicense.org>
+     * 
+     */
+
+    /*jshint devel:true, asi:true */
+
+    /*global define, module */
+
+
+    (function (root, factory) {
+        if (typeof define === "function" && define.amd) {
+            define([], factory())
+        } else if (typeof module === "object" && module.exports) {
+            module.exports = factory()
+        } else {
+            (function install() {
+                // To make sure Zenscroll can be referenced from the header, before `body` is available
+                if (document && document.body) {
+                    root.zenscroll = factory()
+                } else {
+                    // retry 9ms later
+                    setTimeout(install, 9)
                 }
-                else if (elementClassName == "modal" && opacity==1) {
-                    modal.style.display = "none";
-                };
-                //alert(elementClassName); check class name
-                console.log(elementClassName)
-            });
+            })()
+        }
+    }(this, function () {
+        "use strict"
 
-                        
-            //Functin enlarges the image when the image is clicked on in the modal
-            function enlargeimage() {
-                modal.style.display = 'block';
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
+
+        // Detect if the browser already supports native smooth scrolling (e.g., Firefox 36+ and Chrome 49+) and it is enabled:
+        var isNativeSmoothScrollEnabledOn = function (elem) {
+            return elem && "getComputedStyle" in window &&
+                window.getComputedStyle(elem)["scroll-behavior"] === "smooth"
+        }
+
+
+        // Exit if it’s not a browser environment:
+        if (typeof window === "undefined" || !("document" in window)) {
+            return {}
+        }
+
+
+        var makeScroller = function (container, defaultDuration, edgeOffset) {
+
+            // Use defaults if not provided
+            defaultDuration = defaultDuration || 999 //ms
+            if (!edgeOffset && edgeOffset !== 0) {
+                // When scrolling, this amount of distance is kept from the edges of the container:
+                edgeOffset = 9 //px
             }
-            var span = document.getElementsByClassName('close')[0];
-            span.onclick = function(){
-                modal.style.display = 'none';
+
+            // Handling the life-cycle of the scroller
+            var scrollTimeoutId
+            var setScrollTimeoutId = function (newValue) {
+                scrollTimeoutId = newValue
             }
-        
-            document.updateDetails = function(dateString){
-                console.log(dateString)
-                date.innerHTML = dateString;
+
+            /**
+             * Stop the current smooth scroll operation immediately
+             */
+            var stopScroll = function () {
+                clearTimeout(scrollTimeoutId)
+                setScrollTimeoutId(0)
             }
-        
-            //These too functions are what are activated when openening and closing the modal slide show
-            document.displaySlides= function(element){
-            //Opens the slideshow, and procedds to 
-                $("#myModal").fadeIn(500);
-                modal.style.display = 'block';
-                modalImg.src = element.src;
-                date.innerHTML = element.alt;                    
+
+            var getTopWithEdgeOffset = function (elem) {
+                return Math.max(0, container.getTopOf(elem) - edgeOffset)
             }
-            var slideIndex = 0;
-    
-            document.plusSlides = function(n) {
-                showSlides(slideIndex += n, true);
+
+            /**
+             * Scrolls to a specific vertical position in the document.
+             *
+             * @param {targetY} The vertical position within the document.
+             * @param {duration} Optionally the duration of the scroll operation.
+             *        If not provided the default duration is used.
+             * @param {onDone} An optional callback function to be invoked once the scroll finished.
+             */
+            var scrollToY = function (targetY, duration, onDone) {
+                stopScroll()
+                if (duration === 0 || (duration && duration < 0) || isNativeSmoothScrollEnabledOn(container.body)) {
+                    container.toY(targetY)
+                    if (onDone) {
+                        onDone()
+                    }
+                } else {
+                    var startY = container.getY()
+                    var distance = Math.max(0, targetY) - startY
+                    var startTime = new Date().getTime()
+                    duration = duration || Math.min(Math.abs(distance), defaultDuration);
+                    (function loopScroll() {
+                        setScrollTimeoutId(setTimeout(function () {
+                            // Calculate percentage:
+                            var p = Math.min(1, (new Date().getTime() - startTime) / duration)
+                            // Calculate the absolute vertical position:
+                            var y = Math.max(0, Math.floor(startY + distance*(p < 0.5 ? 2*p*p : p*(4 - p*2)-1)))
+                            container.toY(y)
+                            if (p < 1 && (container.getHeight() + y) < container.body.scrollHeight) {
+                                loopScroll()
+                            } else {
+                                setTimeout(stopScroll, 99) // with cooldown time
+                                if (onDone) {
+                                    onDone()
+                                }
+                            }
+                        }, 9))
+                    })()
+                }
             }
-    
-            function currentSlide(n) {
-                showSlides(slideIndex = n, true);
+
+            /**
+             * Scrolls to the top of a specific element.
+             *
+             * @param {elem} The element to scroll to.
+             * @param {duration} Optionally the duration of the scroll operation.
+             * @param {onDone} An optional callback function to be invoked once the scroll finished.
+             */
+            var scrollToElem = function (elem, duration, onDone) {
+                scrollToY(getTopWithEdgeOffset(elem), duration, onDone)
             }
-        
-            function showSlides(n, plus) {
-                var bool = plus;
-                var i;
-                var slides =  $(".artworkPieces");
-                var dots = $(".artworkPieces");
-                if (n > (slides.length- 1)) {slideIndex = 0;n=0}
-                if (n < 0) {slideIndex = slides.length-1; n = slides.length-1}
-                if (bool){
-                    modalImg.src = $(".artworkPieces")[slideIndex].src;
-                    date.innerHTML = $(".artworkPieces")[slideIndex].alt;
+            /**
+             * Scrolls an element into view if necessary.
+             *
+             * @param {elem} The element.
+             * @param {duration} Optionally the duration of the scroll operation.
+             * @param {onDone} An optional callback function to be invoked once the scroll finished.
+             */
+            var scrollIntoView = function (elem, duration, onDone) {
+                var elemHeight = elem.getBoundingClientRect().height
+                var elemBottom = container.getTopOf(elem) + elemHeight
+                var containerHeight = container.getHeight()
+                var y = container.getY()
+                var containerBottom = y + containerHeight
+                if (getTopWithEdgeOffset(elem) < y || (elemHeight + edgeOffset) > containerHeight) {
+                    // Element is clipped at top or is higher than screen.
+                    scrollToElem(elem, duration, onDone)
+                } else if ((elemBottom + edgeOffset) > containerBottom) {
+                    // Element is clipped at the bottom.
+                    scrollToY(elemBottom - containerHeight + edgeOffset, duration, onDone)
+                } else if (onDone) {
+                    onDone()
+                }
+            }
+
+            /**
+             * Scrolls to the center of an element.
+             *
+             * @param {elem} The element.
+             * @param {duration} Optionally the duration of the scroll operation.
+             * @param {offset} Optionally the offset of the top of the element from the center of the screen.
+             *        A value of 0 is ignored.
+             * @param {onDone} An optional callback function to be invoked once the scroll finished.
+             */
+            var scrollToCenterOf = function (elem, duration, offset, onDone) {
+                scrollToY(Math.max(0, container.getTopOf(elem) - container.getHeight()/2 + (offset || elem.getBoundingClientRect().height/2)), duration, onDone)
+            }
+
+            /**
+             * Changes default settings for this scroller.
+             *
+             * @param {newDefaultDuration} Optionally a new value for default duration, used for each scroll method by default.
+             *        Ignored if null or undefined.
+             * @param {newEdgeOffset} Optionally a new value for the edge offset, used by each scroll method by default. Ignored if null or undefined.
+             * @returns An object with the current values.
+             */
+            var setup = function (newDefaultDuration, newEdgeOffset) {
+                if (newDefaultDuration === 0 || newDefaultDuration) {
+                    defaultDuration = newDefaultDuration
+                }
+                if (newEdgeOffset === 0 || newEdgeOffset) {
+                    edgeOffset = newEdgeOffset
+                }
+                return {
+                    defaultDuration: defaultDuration,
+                    edgeOffset: edgeOffset
+                }
+            }
+
+            return {
+                setup: setup,
+                to: scrollToElem,
+                toY: scrollToY,
+                intoView: scrollIntoView,
+                center: scrollToCenterOf,
+                stop: stopScroll,
+                moving: function () { return !!scrollTimeoutId },
+                getY: container.getY,
+                getTopOf: container.getTopOf
+            }
+
+        }
+
+
+        var docElem = document.documentElement
+        var getDocY = function () { return window.scrollY || docElem.scrollTop }
+
+        // Create a scroller for the document:
+        var zenscroll = makeScroller({
+            body: document.scrollingElement || document.body,
+            toY: function (y) { window.scrollTo(0, y) },
+            getY: getDocY,
+            getHeight: function () { return window.innerHeight || docElem.clientHeight },
+            getTopOf: function (elem) { return elem.getBoundingClientRect().top + getDocY() - docElem.offsetTop }
+        })
+
+
+        /**
+         * Creates a scroller from the provided container element (e.g., a DIV)
+         *
+         * @param {scrollContainer} The vertical position within the document.
+         * @param {defaultDuration} Optionally a value for default duration, used for each scroll method by default.
+         *        Ignored if 0 or null or undefined.
+         * @param {edgeOffset} Optionally a value for the edge offset, used by each scroll method by default. 
+         *        Ignored if null or undefined.
+         * @returns A scroller object, similar to `zenscroll` but controlling the provided element.
+         */
+        zenscroll.createScroller = function (scrollContainer, defaultDuration, edgeOffset) {
+            return makeScroller({
+                body: scrollContainer,
+                toY: function (y) { scrollContainer.scrollTop = y },
+                getY: function () { return scrollContainer.scrollTop },
+                getHeight: function () { return Math.min(scrollContainer.clientHeight, window.innerHeight || docElem.clientHeight) },
+                getTopOf: function (elem) { return elem.offsetTop }
+            }, defaultDuration, edgeOffset)
+        }
+
+
+        // Automatic link-smoothing on achors
+        // Exclude IE8- or when native is enabled or Zenscroll auto- is disabled
+        if ("addEventListener" in window && !window.noZensmooth && !isNativeSmoothScrollEnabledOn(document.body)) {
+
+            var isHistorySupported = "history" in window && "pushState" in history
+            var isScrollRestorationSupported = isHistorySupported && "scrollRestoration" in history
+
+            // On first load & refresh make sure the browser restores the position first
+            if (isScrollRestorationSupported) {
+                history.scrollRestoration = "auto"
+            }
+
+            window.addEventListener("load", function () {
+
+                if (isScrollRestorationSupported) {
+                    // Set it to manual
+                    setTimeout(function () { history.scrollRestoration = "manual" }, 9)
+                    window.addEventListener("popstate", function (event) {
+                        if (event.state && "zenscrollY" in event.state) {
+                            zenscroll.toY(event.state.zenscrollY)
+                        }
+                    }, false)
+                }
+
+                // Add edge offset on first load if necessary
+                // This may not work on IE (or older computer?) as it requires more timeout, around 100 ms
+                if (window.location.hash) {
+                    setTimeout(function () {
+                        // Adjustment is only needed if there is an edge offset:
+                        var edgeOffset = zenscroll.setup().edgeOffset
+                        if (edgeOffset) {
+                            var targetElem = document.getElementById(window.location.href.split("#")[1])
+                            if (targetElem) {
+                                var targetY = Math.max(0, zenscroll.getTopOf(targetElem) - edgeOffset)
+                                var diff = zenscroll.getY() - targetY
+                                // Only do the adjustment if the browser is very close to the element:
+                                if (0 <= diff && diff < 9 ) {
+                                    window.scrollTo(0, targetY)
+                                }
+                            }
+                        }
+                    }, 9)
+                }
+
+            }, false)
+
+            // Handling clicks on anchors
+            var RE_noZensmooth = new RegExp("(^|\\s)noZensmooth(\\s|$)")
+            window.addEventListener("click", function (event) {
+                var anchor = event.target
+                while (anchor && anchor.tagName !== "A") {
+                    anchor = anchor.parentNode
+                }
+                // Let the browser handle the click if it wasn't with the primary button, or with some modifier keys:
+                if (!anchor || event.which !== 1 || event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) {
                     return
                 }
-            }
-            function closeModal(){
-                $("myModal").fadeOut(500);
-            }
-    
-            document.body.insertAdjacentHTML( 'beforeEnd', '<iframe id="my-like-frame" style="display:none;"></iframe>' );
-            document.addEventListener( 'click', function ( event ) {
-                var myLike = event.target; 
-                if( myLike.className.indexOf( 'my-like' ) > -1 ) { 
-                var frame = document.getElementById( 'my-like-frame' ), liked = ( myLike.className == 'my-liked' ), command = liked ? 'unlike' : 'like', reblog = myLike.getAttribute( 'data-reblog' ), id = myLike.getAttribute( 'data-id' ), oauth = reblog.slice( -8 ); frame.src = 'https://www.tumblr.com/' + command + '/' + oauth + '?id=' + id; liked ? myLike.className = 'my-like' : myLike.className = 'my-liked'; }; }, false ); 
+                // Save the current scrolling position so it can be used for scroll restoration:
+                if (isScrollRestorationSupported) {
+                    var historyState = history.state && typeof history.state === "object" ? history.state : {}
+                    historyState.zenscrollY = zenscroll.getY()
+                    try {
+                        history.replaceState(historyState, "")
+                    } catch (e) {
+                        // Avoid the Chrome Security exception on file protocol, e.g., file://index.html
+                    }
+                }
+                // Find the referenced ID:
+                var href = anchor.getAttribute("href") || ""
+                if (href.indexOf("#") === 0 && !RE_noZensmooth.test(anchor.className)) {
+                    var targetY = 0
+                    var targetElem = document.getElementById(href.substring(1))
+                    if (href !== "#") {
+                        if (!targetElem) {
+                            // Let the browser handle the click if the target ID is not found.
+                            return
+                        }
+                        targetY = zenscroll.getTopOf(targetElem)
+                    }
+                    event.preventDefault()
+                    // By default trigger the browser's `hashchange` event...
+                    var onDone = function () { window.location = href }
+                    // ...unless there is an edge offset specified
+                    var edgeOffset = zenscroll.setup().edgeOffset
+                    if (edgeOffset) {
+                        targetY = Math.max(0, targetY - edgeOffset)
+                        if (isHistorySupported) {
+                            onDone = function () { history.pushState({}, "", href) }
+                        }
+                    }
+                    zenscroll.toY(targetY, null, onDone)
+                }
+            }, false)
+
         }
-        </script>
+        return zenscroll
+    }));
+    </script>
 </html>
