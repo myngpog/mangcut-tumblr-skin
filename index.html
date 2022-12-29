@@ -10,7 +10,7 @@
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
     <title>{Title}</title>
     <link rel="icon" href="{Favicon}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,23 +84,11 @@
           <span><a href="/archive">Archive</a></span>
           <span><a href="{text: Links}">Links</a></span>
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 2ee4d03dc8f51cb2381d40bcd6f93322da43b8aa
         <span id = "arrow">
             <a>
                 <img src="https://static.tumblr.com/yn9pnsq/5SOrnmv37/arrow-down-2-icon.png" width="35px"></img>
             </a>
         </span>
-<<<<<<< HEAD
-=======
-        <button id = 'arrow'>
-            <a>Button</a>
-        </button>
->>>>>>> 064a6a7ece2e4ee72ce97ff2feff33f39659a3a0
-=======
->>>>>>> 2ee4d03dc8f51cb2381d40bcd6f93322da43b8aa
 
     </div>
 </header>
@@ -291,7 +279,8 @@
         }
         #mainDiv{
             min-height: 100vh;
-            background-color: hsla(0, 0%, 0%, .65);
+            /*Change Background Color Here*/
+            background-color: rgb(177, 77, 77);
         }
         #artworkText{
             font-family: 'Quicksand', sans-serif;
@@ -463,6 +452,35 @@
                 width: 300px;
             }
         }
+        @media screen and (max-width: 390px){
+            .artworkPieces{
+                height: 210px;
+                width: 265px;
+            }
+            .modal-content{
+                width: 200px;
+            }
+            .caption-content{
+                width: 200px;
+            }
+            #artworkText{
+                font-size: 30px;
+            }
+            hr#underline{
+                border: none;
+                height: 1px;
+                background: white;
+                animation: separator-width2 1s ease-out forwards;
+            }
+            @keyframes separator-width2 {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 160px;
+            }
+        }
+        }
         @media screen and (max-width: 300px){
             .artworkPieces{
                 height: 200px;
@@ -484,16 +502,17 @@
             }
             .main-visual{
                 background-image: url("{text:Vertical Img URL}");
+                background-attachment: scroll;
+                background-size: cover;
+                height: 100vh;
             }
         }
 
-        htnml {
+        html {
             scroll-behavior: smooth;
+            overscroll-behavior: none;
         }
-
-        htnml {
-            scroll-behavior: smooth;
-        }
+        
     </style>
 
     <!-- Javascript Script -->
