@@ -4,10 +4,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta name="if:Infinite Scroll" content="0">
 
-
     <!-- Infinite Scroll Begin -->
     <script src="https://matthewrayfield.github.io/tumblr-infinite-scrolling/infinitescrolling.js"></script>
     <!-- Infinite Scroll END -->
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,15 +84,17 @@
           <span><a href="/archive">Archive</a></span>
           <span><a href="{text: FAQs}">FAQs</a></span>
         </div>
-        <img src = "https://github.com/myngpog/mangcut-tumblr-skin/blob/1090a2e32313602f19456225efabc1a516d2c893/downthinwhite.png" id = "arrow">
+        <button id = 'arrow'>
+            <a>Button</a>
+        </button>
 
     </div>
 </header>
 <body>
     <div id = "mainDiv">
         <div id = 'artworkHeader'>
-            <h1 class = 'artworkText'>Illustrations</h1>
-            <hr class = "underline">
+            <h1 id = 'artworkText'>Illustrations</h1>
+            <hr id = "underline">
         </div>
         
         <div class = "allArtwork">
@@ -270,13 +272,14 @@
 
         /* Artwork CSS */
         #artworkHeader{
+            padding-top: 1%;
             margin-left: 7.5%;
         }
         #mainDiv{
             min-height: 100vh;
             background-color: hsla(0, 0%, 0%, .65);
         }
-        .artworkText{
+        #artworkText{
             font-family: 'Quicksand', sans-serif;
             color: white;
             font-size: 40px;
@@ -300,7 +303,7 @@
             width: 400px;
             object-fit: cover;
         }
-        hr.underline{
+        hr#underline{
             border: none;
             height: 1px;
             background: white;
@@ -460,18 +463,10 @@
 
         arrow.onclick = function(){
             console.log('pog')
-            let mainDiv = document.getElementById('artworkheader')
-            zenscroll.to(mainDiv)
+            let artworkText = document.getElementById('artworkText')
+            zenscroll.to(artworkText)
         }
-
-        // window.onclick = function() {
-        //     let element = document.getElementById("mainDiv")
-        //     console.log("Pog")
-        //     zenscroll.to(element)
-        // }
-
-
-                    
+      
         //Functin enlarges the image when the image is clicked on in the modal
         function enlargeimage() {
             modal.style.display = 'block';
