@@ -521,12 +521,9 @@
             let artworkText = document.getElementById('artworkText')
             zenscroll.to(artworkText)
         }
-<<<<<<< HEAD
         illustrationButton.onclick = function() {
             zenscroll.to(artworkText)
         }
-=======
->>>>>>> 064a6a7ece2e4ee72ce97ff2feff33f39659a3a0
       
         //Functin enlarges the image when the image is clicked on in the modal
         function enlargeimage() {
@@ -730,8 +727,7 @@
             var scrollToElem = function (elem, duration, onDone) {
                 scrollToY(getTopWithEdgeOffset(elem), duration, onDone)
             }
-<<<<<<< HEAD
-
+w
             /**
              * Scrolls an element into view if necessary.
              *
@@ -851,128 +847,6 @@
                 history.scrollRestoration = "auto"
             }
 
-=======
-
-            /**
-             * Scrolls an element into view if necessary.
-             *
-             * @param {elem} The element.
-             * @param {duration} Optionally the duration of the scroll operation.
-             * @param {onDone} An optional callback function to be invoked once the scroll finished.
-             */
-            var scrollIntoView = function (elem, duration, onDone) {
-                var elemHeight = elem.getBoundingClientRect().height
-                var elemBottom = container.getTopOf(elem) + elemHeight
-                var containerHeight = container.getHeight()
-                var y = container.getY()
-                var containerBottom = y + containerHeight
-                if (getTopWithEdgeOffset(elem) < y || (elemHeight + edgeOffset) > containerHeight) {
-                    // Element is clipped at top or is higher than screen.
-                    scrollToElem(elem, duration, onDone)
-                } else if ((elemBottom + edgeOffset) > containerBottom) {
-                    // Element is clipped at the bottom.
-                    scrollToY(elemBottom - containerHeight + edgeOffset, duration, onDone)
-                } else if (onDone) {
-                    onDone()
-                }
-            }
-
-            /**
-             * Scrolls to the center of an element.
-             *
-             * @param {elem} The element.
-             * @param {duration} Optionally the duration of the scroll operation.
-             * @param {offset} Optionally the offset of the top of the element from the center of the screen.
-             *        A value of 0 is ignored.
-             * @param {onDone} An optional callback function to be invoked once the scroll finished.
-             */
-            var scrollToCenterOf = function (elem, duration, offset, onDone) {
-                scrollToY(Math.max(0, container.getTopOf(elem) - container.getHeight()/2 + (offset || elem.getBoundingClientRect().height/2)), duration, onDone)
-            }
-
-            /**
-             * Changes default settings for this scroller.
-             *
-             * @param {newDefaultDuration} Optionally a new value for default duration, used for each scroll method by default.
-             *        Ignored if null or undefined.
-             * @param {newEdgeOffset} Optionally a new value for the edge offset, used by each scroll method by default. Ignored if null or undefined.
-             * @returns An object with the current values.
-             */
-            var setup = function (newDefaultDuration, newEdgeOffset) {
-                if (newDefaultDuration === 0 || newDefaultDuration) {
-                    defaultDuration = newDefaultDuration
-                }
-                if (newEdgeOffset === 0 || newEdgeOffset) {
-                    edgeOffset = newEdgeOffset
-                }
-                return {
-                    defaultDuration: defaultDuration,
-                    edgeOffset: edgeOffset
-                }
-            }
-
-            return {
-                setup: setup,
-                to: scrollToElem,
-                toY: scrollToY,
-                intoView: scrollIntoView,
-                center: scrollToCenterOf,
-                stop: stopScroll,
-                moving: function () { return !!scrollTimeoutId },
-                getY: container.getY,
-                getTopOf: container.getTopOf
-            }
-
-        }
-
-
-        var docElem = document.documentElement
-        var getDocY = function () { return window.scrollY || docElem.scrollTop }
-
-        // Create a scroller for the document:
-        var zenscroll = makeScroller({
-            body: document.scrollingElement || document.body,
-            toY: function (y) { window.scrollTo(0, y) },
-            getY: getDocY,
-            getHeight: function () { return window.innerHeight || docElem.clientHeight },
-            getTopOf: function (elem) { return elem.getBoundingClientRect().top + getDocY() - docElem.offsetTop }
-        })
-
-
-        /**
-         * Creates a scroller from the provided container element (e.g., a DIV)
-         *
-         * @param {scrollContainer} The vertical position within the document.
-         * @param {defaultDuration} Optionally a value for default duration, used for each scroll method by default.
-         *        Ignored if 0 or null or undefined.
-         * @param {edgeOffset} Optionally a value for the edge offset, used by each scroll method by default. 
-         *        Ignored if null or undefined.
-         * @returns A scroller object, similar to `zenscroll` but controlling the provided element.
-         */
-        zenscroll.createScroller = function (scrollContainer, defaultDuration, edgeOffset) {
-            return makeScroller({
-                body: scrollContainer,
-                toY: function (y) { scrollContainer.scrollTop = y },
-                getY: function () { return scrollContainer.scrollTop },
-                getHeight: function () { return Math.min(scrollContainer.clientHeight, window.innerHeight || docElem.clientHeight) },
-                getTopOf: function (elem) { return elem.offsetTop }
-            }, defaultDuration, edgeOffset)
-        }
-
-
-        // Automatic link-smoothing on achors
-        // Exclude IE8- or when native is enabled or Zenscroll auto- is disabled
-        if ("addEventListener" in window && !window.noZensmooth && !isNativeSmoothScrollEnabledOn(document.body)) {
-
-            var isHistorySupported = "history" in window && "pushState" in history
-            var isScrollRestorationSupported = isHistorySupported && "scrollRestoration" in history
-
-            // On first load & refresh make sure the browser restores the position first
-            if (isScrollRestorationSupported) {
-                history.scrollRestoration = "auto"
-            }
-
->>>>>>> 064a6a7ece2e4ee72ce97ff2feff33f39659a3a0
             window.addEventListener("load", function () {
 
                 if (isScrollRestorationSupported) {
